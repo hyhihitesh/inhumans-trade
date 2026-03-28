@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subscription Tier Manager | INHUMANS.IO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Manrope:wght@200..800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-container": "#b7b5b2",
+                        "surface-variant": "#353533",
+                        "background": "#131312",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#005925",
+                        "on-error": "#690005",
+                        "inverse-primary": "#006b5f",
+                        "on-surface": "#e5e2df",
+                        "surface-tint": "#3cddc7",
+                        "surface-container-lowest": "#0e0e0d",
+                        "on-secondary-fixed-variant": "#474744",
+                        "on-tertiary-fixed": "#002109",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "secondary-fixed": "#e5e2df",
+                        "primary-container": "#2dd4bf",
+                        "outline": "#859490",
+                        "on-secondary": "#31302e",
+                        "outline-variant": "#3c4a46",
+                        "on-primary-fixed": "#00201c",
+                        "inverse-surface": "#e5e2df",
+                        "tertiary": "#61f587",
+                        "on-primary-fixed-variant": "#005047",
+                        "on-secondary-fixed": "#1c1c1a",
+                        "on-primary-container": "#00574d",
+                        "secondary": "#c8c6c3",
+                        "on-background": "#e5e2df",
+                        "surface-container-low": "#1c1c1a",
+                        "surface-container": "#20201e",
+                        "surface-bright": "#3a3938",
+                        "primary-fixed-dim": "#3cddc7",
+                        "tertiary-fixed": "#6bff8f",
+                        "secondary-container": "#474744",
+                        "error-container": "#93000a",
+                        "primary": "#57f1db",
+                        "on-surface-variant": "#bacac5",
+                        "surface-dim": "#131312",
+                        "secondary-fixed-dim": "#c8c6c3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#353533",
+                        "on-primary": "#003731",
+                        "inverse-on-surface": "#31302f",
+                        "surface-container-high": "#2a2a29",
+                        "surface": "#131312",
+                        "on-tertiary": "#003915",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "primary-fixed": "#62fae3",
+                        "tertiary-container": "#3fd86e"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"],
+                        "mono": ["JetBrains Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cabinet-font { font-family: 'Space Grotesk', sans-serif; }
+        .satoshi-font { font-family: 'Manrope', sans-serif; }
+        .mono-font { font-family: 'JetBrains Mono', monospace; }
+        .ease-out-expo { transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+        .glass-gradient {
+            background: radial-gradient(circle at center, rgba(87, 241, 219, 0.1) 0%, rgba(45, 212, 191, 0.05) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="bg-[#131312]/80 backdrop-blur-xl docked full-width top-0 sticky z-50 no-border bg-[#1c1c1a] flat no shadows">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-[-0.04em] text-[#e5e2df] cabinet-font">INHUMANS.IO</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-[#a3a3a3] hover:text-[#e5e2df] transition-colors satoshi-font text-sm uppercase tracking-wider" href="#">Feed</a>
+<a class="text-[#a3a3a3] hover:text-[#e5e2df] transition-colors satoshi-font text-sm uppercase tracking-wider" href="#">Portfolio</a>
+<a class="text-[#a3a3a3] hover:text-[#e5e2df] transition-colors satoshi-font text-sm uppercase tracking-wider" href="#">Explore</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#a3a3a3] hover:text-[#e5e2df] transition-colors">notifications</button>
+<button class="material-symbols-outlined text-[#a3a3a3] hover:text-[#e5e2df] transition-colors">account_balance_wallet</button>
+<div class="flex items-center gap-2 bg-[#1c1c1a] px-3 py-1.5 rounded-lg border border-outline-variant/15">
+<span class="text-[#2dd4bf] text-xs font-bold uppercase tracking-widest">Connected</span>
+<div class="w-2 h-2 rounded-full bg-[#2dd4bf] animate-pulse"></div>
+</div>
+</div>
+</div>
+</nav>
+<div class="flex min-h-[calc(100-72px)] max-w-[1440px] mx-auto">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-[#131312] border-r border-[#1c1c1a] pt-24">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-surface-container-high rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h3 class="cabinet-font text-[#e5e2df] font-bold text-sm tracking-tight">The Vault</h3>
+<p class="satoshi-font text-[#3a3938] text-[10px] uppercase tracking-widest">Verified Precision</p>
+</div>
+</div>
+</div>
+<nav class="flex-1">
+<div class="space-y-1">
+<a class="flex items-center gap-3 text-[#3a3938] pl-5 py-3 hover:bg-[#1c1c1a] hover:text-[#e5e2df] transition-all linear duration-150 group" href="#">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+<span class="satoshi-font text-sm">Home</span>
+</a>
+<a class="flex items-center gap-3 text-[#3a3938] pl-5 py-3 hover:bg-[#1c1c1a] hover:text-[#e5e2df] transition-all linear duration-150" href="#">
+<span class="material-symbols-outlined text-xl">insert_chart</span>
+<span class="satoshi-font text-sm">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 text-[#3a3938] pl-5 py-3 hover:bg-[#1c1c1a] hover:text-[#e5e2df] transition-all linear duration-150" href="#">
+<span class="material-symbols-outlined text-xl">lock</span>
+<span class="satoshi-font text-sm">Vaults</span>
+</a>
+<a class="flex items-center gap-3 text-[#2dd4bf] font-bold border-l-4 border-[#2dd4bf] pl-4 py-3 bg-[#1c1c1a]" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="satoshi-font text-sm">Settings</span>
+</a>
+</div>
+</nav>
+<div class="p-6 border-t border-[#1c1c1a]">
+<button class="w-full bg-primary-container text-on-primary py-2.5 rounded-lg text-xs font-bold uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all ease-out-expo">
+                    Upgrade Tier
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 p-6 md:p-12 mb-24 lg:mb-0">
+<header class="mb-12">
+<div class="flex items-center gap-2 mb-2 text-[#a3a3a3]">
+<span class="satoshi-font text-xs uppercase tracking-widest">Settings</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="satoshi-font text-xs uppercase tracking-widest text-primary">Pricing &amp; Tiers</span>
+</div>
+<h1 class="cabinet-font text-5xl font-extrabold tracking-tight text-on-surface">Monetize your signal.</h1>
+<p class="satoshi-font text-[#a3a3a3] mt-4 max-w-xl text-lg leading-relaxed">
+                    Configure your subscription tiers to offer exclusive trade alerts, technical analysis, and private community access to your followers.
+                </p>
+</header>
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-12">
+<!-- Editor Section -->
+<div class="xl:col-span-7 space-y-6">
+<!-- Free Tier Card -->
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover:border-outline-variant/30 transition-colors">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="mono-font text-[10px] text-primary uppercase tracking-[0.2em] mb-2 block">ENTRY LEVEL</span>
+<h3 class="cabinet-font text-2xl font-bold">Free</h3>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-lg text-xs font-bold text-on-surface-variant hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                EDIT TIER
+                            </button>
+</div>
+<div class="flex items-baseline gap-2 mb-8">
+<span class="mono-font text-4xl font-bold text-on-surface">₹0</span>
+<span class="satoshi-font text-[#a3a3a3] text-sm italic">/ month</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-center gap-3 text-[#a3a3a3]">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span class="satoshi-font text-sm">Public market updates</span>
+</div>
+<div class="flex items-center gap-3 text-[#a3a3a3]">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span class="satoshi-font text-sm">Portfolio viewing</span>
+</div>
+<div class="flex items-center gap-3 text-[#a3a3a3]">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span class="satoshi-font text-sm">24h delayed alerts</span>
+</div>
+</div>
+</div>
+<!-- Pro Tier Card -->
+<div class="bg-surface-container rounded-xl p-8 border border-primary/20 relative overflow-hidden">
+<div class="absolute top-0 right-0 px-4 py-1 bg-primary text-on-primary text-[10px] font-black uppercase tracking-widest rounded-bl-xl">POPULAR</div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="mono-font text-[10px] text-primary uppercase tracking-[0.2em] mb-2 block">POWER USER</span>
+<h3 class="cabinet-font text-2xl font-bold">Pro</h3>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-lg text-xs font-bold text-primary hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                EDIT TIER
+                            </button>
+</div>
+<div class="flex items-baseline gap-2 mb-8">
+<span class="mono-font text-4xl font-bold text-on-surface">₹2,499</span>
+<span class="satoshi-font text-[#a3a3a3] text-sm italic">/ month</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="satoshi-font text-sm">Instant trade alerts</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="satoshi-font text-sm">Daily market analysis</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="satoshi-font text-sm">Discord access</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="satoshi-font text-sm">Position sizing guide</span>
+</div>
+</div>
+</div>
+<!-- Premium Tier Card -->
+<div class="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 hover:border-outline-variant/30 transition-colors">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="mono-font text-[10px] text-primary uppercase tracking-[0.2em] mb-2 block">ELITE ACCESS</span>
+<h3 class="cabinet-font text-2xl font-bold">Premium</h3>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-lg text-xs font-bold text-on-surface-variant hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                EDIT TIER
+                            </button>
+</div>
+<div class="flex items-baseline gap-2 mb-8">
+<span class="mono-font text-4xl font-bold text-on-surface">₹7,999</span>
+<span class="satoshi-font text-[#a3a3a3] text-sm italic">/ month</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-center gap-3 text-[#a3a3a3]">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span class="satoshi-font text-sm">1-on-1 monthly call</span>
+</div>
+<div class="flex items-center gap-3 text-[#a3a3a3]">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span class="satoshi-font text-sm">Live trading room</span>
+</div>
+<div class="flex items-center gap-3 text-[#a3a3a3]">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span class="satoshi-font text-sm">All Pro features</span>
+</div>
+<div class="flex items-center gap-3 text-[#a3a3a3]">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span class="satoshi-font text-sm">Custom indicator access</span>
+</div>
+</div>
+</div>
+<!-- Transparency Disclaimer -->
+<div class="mt-12 bg-surface-container-lowest p-6 rounded-xl border border-primary/5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 glass-gradient rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+</div>
+<div>
+<p class="satoshi-font font-bold text-on-surface">Transparency Protocol</p>
+<p class="mono-font text-xs text-[#a3a3a3]">Inhumans takes 15% — you keep 85%</p>
+</div>
+</div>
+<div class="text-right">
+<p class="mono-font text-xs text-[#a3a3a3] uppercase tracking-wider">Creator Payouts</p>
+<p class="mono-font text-lg font-bold text-tertiary">Weekly</p>
+</div>
+</div>
+</div>
+<!-- Preview Panel -->
+<div class="xl:col-span-5 relative">
+<div class="sticky top-28">
+<div class="mb-6 flex items-center justify-between">
+<h2 class="cabinet-font text-xl font-bold uppercase tracking-tight">Public Preview</h2>
+<span class="text-[10px] mono-font bg-surface-bright px-2 py-0.5 rounded text-[#a3a3a3]">LIVE RENDER</span>
+</div>
+<div class="bg-[#1c1c1a] rounded-2xl p-1 shadow-2xl overflow-hidden border border-outline-variant/10">
+<!-- Mock Browser Window -->
+<div class="bg-[#131312] rounded-xl overflow-hidden min-h-[500px] flex flex-col">
+<div class="h-40 relative bg-surface-container-high">
+<img alt="Abstract digital trading visualization with glowing neon lines and data points in a dark environment" class="w-full h-full object-cover opacity-50" data-alt="Abstract digital trading visualization with glowing neon lines and data points in a dark environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtIWQnpspH9FEosIxgDz3zdA07aQItps5zd3QIzdK47Sth7Gvus0BPUpC_F3Vh1bUqGLHOGn59_YSetyfY2YdCuSGTEieFOPjtt6jDDejfaEz40z7cTluLK9Eyo8v-RJNXVEs1WiBfHJr-mnCwmmeoUhM9iamut7gdNs_aIVIR5JcWT_AbJrb-EticJrDSZxUz4zmuHPVoF8t_dCr-5JZE83PVJYrkMz6Po3s7xW1fM7V52h1RILMIyPpa7Z_AgxHRvHdiuSxIz4PO"/>
+<div class="absolute bottom-4 left-6 flex items-end gap-4">
+<div class="w-20 h-20 rounded-full border-4 border-[#131312] overflow-hidden bg-background">
+<img alt="Professional male trader with a confident expression in a clean studio setting with moody lighting" class="w-full h-full object-cover" data-alt="Professional male trader with a confident expression in a clean studio setting with moody lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4lMvAdXc325HKyMyTndqc8UwN8bDHOiDN1rREHMgkc5Lof3WfGOL5gHv0h2MfrJtn9r6zuHBQX_im_utXlp85oUA70KE2LOJODe7XOj8idmlK7zL1ON_Uw78i9JhAxoA3BUZG-94XNz-HomStk-DIITKqXCp8yd60uiFaCPYHI-xoOhqmV-fN-vks2kWXc3WByH5mNZTJ819ig1axBBx93YFmgOtmlCyBj59od2J6DS7YvV53sMWvVd5X8iFyhGdQbJM0va8yGBXT"/>
+</div>
+<div class="mb-2">
+<div class="flex items-center gap-1">
+<h4 class="cabinet-font font-bold">Vector_X</h4>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="satoshi-font text-[10px] text-[#a3a3a3]">Macro Strategist</p>
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex gap-3 mb-6">
+<div class="flex-1 h-1 bg-primary/20 rounded-full"></div>
+<div class="flex-1 h-1 bg-primary rounded-full shadow-[0_0_8px_rgba(45,212,191,0.5)]"></div>
+<div class="flex-1 h-1 bg-primary/20 rounded-full"></div>
+</div>
+<h5 class="cabinet-font font-bold mb-4">Choose your access tier</h5>
+<div class="space-y-3">
+<!-- Pro Tier Preview -->
+<div class="bg-surface-container-high border border-primary/40 p-4 rounded-xl">
+<div class="flex justify-between items-center mb-2">
+<span class="cabinet-font font-bold">Pro</span>
+<span class="mono-font text-sm font-bold text-primary">₹2,499</span>
+</div>
+<div class="space-y-1.5 mb-4">
+<div class="flex items-center gap-2 text-[10px] text-[#e5e2df]">
+<span class="material-symbols-outlined text-[12px] text-primary">check_circle</span>
+<span>Instant trade alerts</span>
+</div>
+<div class="flex items-center gap-2 text-[10px] text-[#e5e2df]">
+<span class="material-symbols-outlined text-[12px] text-primary">check_circle</span>
+<span>Daily analysis</span>
+</div>
+</div>
+<button class="w-full bg-primary py-2 rounded-lg text-[10px] font-black uppercase text-on-primary">Subscribe Now</button>
+</div>
+<!-- Other Tier Previews (Collapsed) -->
+<div class="bg-surface-container-low border border-outline-variant/10 p-3 rounded-xl flex justify-between items-center">
+<span class="cabinet-font font-bold text-xs">Free</span>
+<span class="mono-font text-xs text-[#a3a3a3]">View Details</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/10 p-3 rounded-xl flex justify-between items-center">
+<span class="cabinet-font font-bold text-xs">Premium</span>
+<span class="mono-font text-xs text-[#a3a3a3]">View Details</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full lg:hidden z-50 bg-[#131312]/90 backdrop-blur-lg border-t border-[#3c4a46]/15 shadow-[0_-8px_24px_rgba(0,0,0,0.5)]">
+<div class="flex justify-around items-center px-4 pb-6 pt-3">
+<a class="flex flex-col items-center justify-center text-[#3a3938]" href="#">
+<span class="material-symbols-outlined">dynamic_feed</span>
+<span class="font-mono text-[10px] uppercase tracking-wider mt-1">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3a3938]" href="#">
+<span class="material-symbols-outlined">swap_calls</span>
+<span class="font-mono text-[10px] uppercase tracking-wider mt-1">Trade</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3a3938]" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-mono text-[10px] uppercase tracking-wider mt-1">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#2dd4bf] bg-[#2dd4bf]/10 rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-mono text-[10px] uppercase tracking-wider mt-1">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

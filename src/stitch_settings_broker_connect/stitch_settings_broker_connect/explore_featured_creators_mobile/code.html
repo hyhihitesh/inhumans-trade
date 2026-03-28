@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>INHUMANS.IO | Explore Creators</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&amp;family=Manrope:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#0e0e0d",
+              "surface-container-low": "#1c1c1a",
+              "secondary-container": "#474744",
+              "error-container": "#93000a",
+              "secondary-fixed": "#e5e2df",
+              "surface-tint": "#3cddc7",
+              "on-error-container": "#ffdad6",
+              "on-surface-variant": "#bacac5",
+              "on-tertiary-fixed-variant": "#005321",
+              "inverse-on-surface": "#31302f",
+              "surface": "#131312",
+              "surface-variant": "#353533",
+              "secondary-fixed-dim": "#c8c6c3",
+              "tertiary-fixed-dim": "#4ae176",
+              "outline": "#859490",
+              "on-secondary-fixed": "#1c1c1a",
+              "secondary": "#c8c6c3",
+              "surface-container-high": "#2a2a29",
+              "on-primary-fixed-variant": "#005047",
+              "inverse-primary": "#006b5f",
+              "on-primary-fixed": "#00201c",
+              "on-surface": "#e5e2df",
+              "tertiary": "#61f587",
+              "primary-fixed-dim": "#3cddc7",
+              "on-error": "#690005",
+              "on-tertiary-container": "#005925",
+              "on-background": "#e5e2df",
+              "on-primary": "#003731",
+              "error": "#ffb4ab",
+              "primary-fixed": "#62fae3",
+              "surface-dim": "#131312",
+              "inverse-surface": "#e5e2df",
+              "on-primary-container": "#00574d",
+              "on-secondary-fixed-variant": "#474744",
+              "on-secondary-container": "#b7b5b2",
+              "surface-container-highest": "#353533",
+              "surface-bright": "#3a3938",
+              "primary-container": "#2dd4bf",
+              "on-tertiary": "#003915",
+              "on-secondary": "#31302e",
+              "on-tertiary-fixed": "#002109",
+              "tertiary-fixed": "#6bff8f",
+              "outline-variant": "#3c4a46",
+              "tertiary-container": "#3fd86e",
+              "background": "#131312",
+              "primary": "#57f1db",
+              "surface-container": "#20201e"
+            },
+            fontFamily: {
+              "headline": ["Cabinet Grotesk", "Space Grotesk"],
+              "body": ["Satoshi", "Manrope"],
+              "label": ["JetBrains Mono", "monospace"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ease-out-expo {
+            transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .mask-gradient {
+            mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container antialiased">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#131312] dark:bg-[#131312] backdrop-blur-xl opacity-90 border-b border-[#3c4a46]/15 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#2dd4bf]" data-icon="terminal">terminal</span>
+<span class="font-['Cabinet_Grotesk'] font-extrabold tracking-tighter uppercase text-xl text-[#e5e2df] dark:text-[#e5e2df]">INHUMANS.IO</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#3a3938] transition-colors duration-200 ease-out-expo active:scale-95">
+<span class="material-symbols-outlined text-[#e5e2df]" data-icon="notifications">notifications</span>
+</button>
+</nav>
+<main class="pt-20 pb-28 px-4">
+<!-- Header & Search -->
+<header class="mb-8">
+<h1 class="font-['Cabinet_Grotesk'] text-5xl font-black tracking-[-0.04em] text-on-surface mb-2">EXPLORE</h1>
+<p class="text-on-surface-variant font-medium max-w-xs leading-relaxed">Discover elite sovereign architects across the protocol ecosystem.</p>
+</header>
+<!-- Filter Bar (Sticky-ish) -->
+<section class="sticky top-16 z-40 -mx-4 px-4 py-4 bg-background/80 backdrop-blur-md mb-6 overflow-x-auto no-scrollbar flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-lg text-primary text-sm font-semibold whitespace-nowrap border border-primary/20">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                Win Rate
+            </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-lg text-on-surface-variant text-sm font-medium whitespace-nowrap hover:bg-surface-bright transition-colors">
+                Subscribers
+            </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-lg text-on-surface-variant text-sm font-medium whitespace-nowrap hover:bg-surface-bright transition-colors">
+                Asset Class
+            </button>
+<button class="flex items-center justify-center w-10 h-10 bg-surface-container-low rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+</button>
+</section>
+<!-- Creators Grid -->
+<div class="grid grid-cols-1 gap-6">
+<!-- Creator Card 1 -->
+<div class="group relative overflow-hidden bg-surface-container rounded-lg p-5 border border-outline-variant/10 transition-all duration-300 hover:border-primary/30">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="relative w-14 h-14 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional male digital creator with cinematic lighting and deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtKdj-VdBoAGIN2wKvalKy9pGZRxr1cepAN2DAY-g7zq3Js0jBwHRNUllQwvgQygPLCq-YLyL-aQTn9uszp36Wrbs-akTy63H4qjfzZTX8MP2jOcehXHmc38S3uxpmDkq3e_EnkEq2TieiWEu6TqxGBUO_lrpDlYDpDpv9ZCFcJVqqIvD53lhgbEwY-HcaiQHvMl_PBzXxy-FBewEu9TBo6MYWeSNxa95T4cQx1EF4kOpSzxtEurMQodSxU9BgOkFBoZsvWpDSlQPh"/>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline text-lg font-bold tracking-tight text-on-surface">V0ID_WALKER</h3>
+<div class="flex items-center justify-center w-4 h-4 bg-gradient-to-br from-primary/20 to-transparent rounded-full border border-primary/40">
+<span class="material-symbols-outlined text-[10px] text-primary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<p class="font-label text-[10px] text-primary tracking-wider">PROTOCOL ARCHITECT</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label text-[11px] text-on-surface-variant block mb-1 uppercase">Win Rate</span>
+<span class="font-label text-xl font-bold text-tertiary">94.2%</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 mb-6">
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<span class="font-label text-[9px] text-on-surface-variant block mb-1 uppercase">Volume</span>
+<span class="font-label text-sm text-on-surface font-semibold">1.2M</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<span class="font-label text-[9px] text-on-surface-variant block mb-1 uppercase">Followers</span>
+<span class="font-label text-sm text-on-surface font-semibold">14.8K</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<span class="font-label text-[9px] text-on-surface-variant block mb-1 uppercase">Risk</span>
+<span class="font-label text-sm text-primary font-semibold">LOW</span>
+</div>
+</div>
+<button class="w-full py-3 bg-primary-container text-on-primary font-bold rounded-lg text-sm tracking-wide active:scale-[0.98] transition-all ease-out-expo">
+                    VIEW PORTFOLIO
+                </button>
+<!-- Decorative background elements -->
+<div class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+</div>
+<!-- Creator Card 2 -->
+<div class="group relative overflow-hidden bg-surface-container rounded-lg p-5 border border-outline-variant/10 transition-all duration-300 hover:border-primary/30">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="relative w-14 h-14 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female technology expert with modern neon lighting highlights in a dark environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMSKZRXsXU_gDabyHa-vhiuO4Z_BJtPY5qyodjQYquP09bH7nfIKGxzMYu-PMZD1Le8-8tiHMdjedDPPxJnqH2Xz8Z219O7Z092O4_eXXB49BvIvyK08HrDz6HII7VRwM3FMh7lNX_9BjIISsLpxsA5rBILSd4akDr0GU6xQdFvdgMdCsEb_ZoonJ8y157cmx8shYR5EN3TniH-LONg2FoUuoF1SuzWi_XQ_FMc4fT9hsCiSae0hZJu7vxoNBx3L4Vuy9gGFXxVm5N"/>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline text-lg font-bold tracking-tight text-on-surface">NEON_VALKYRIE</h3>
+<div class="flex items-center justify-center w-4 h-4 bg-gradient-to-br from-primary/20 to-transparent rounded-full border border-primary/40">
+<span class="material-symbols-outlined text-[10px] text-primary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<p class="font-label text-[10px] text-primary tracking-wider">DERIVATIVES LEAD</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label text-[11px] text-on-surface-variant block mb-1 uppercase">Win Rate</span>
+<span class="font-label text-xl font-bold text-tertiary">88.7%</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 mb-6">
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<span class="font-label text-[9px] text-on-surface-variant block mb-1 uppercase">Volume</span>
+<span class="font-label text-sm text-on-surface font-semibold">4.8M</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<span class="font-label text-[9px] text-on-surface-variant block mb-1 uppercase">Followers</span>
+<span class="font-label text-sm text-on-surface font-semibold">42.1K</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<span class="font-label text-[9px] text-on-surface-variant block mb-1 uppercase">Risk</span>
+<span class="font-label text-sm text-on-surface-variant font-semibold">MED</span>
+</div>
+</div>
+<button class="w-full py-3 bg-primary-container text-on-primary font-bold rounded-lg text-sm tracking-wide active:scale-[0.98] transition-all ease-out-expo">
+                    VIEW PORTFOLIO
+                </button>
+</div>
+<!-- Creator Card 3 -->
+<div class="group relative overflow-hidden bg-surface-container rounded-lg p-5 border border-outline-variant/10 transition-all duration-300 hover:border-primary/30">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="relative w-14 h-14 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="Professional man in a minimal studio setting with industrial lighting and sharp focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbjEeQfnurTfhpNJJdmDhgcI5B_MO6dCkGoVWox7KMBWxlwY2xCiBbTX5Vud6-2xKD7bC_BY_pSzfjB260ZGGlM_QLY7fGgo4gnN3g2gDLZlOqbwVrKzmI6-zTP5rDkVeRUG6QG52gxd3GP10mwQ_vwjtPBi725OlPQRknDFRTBuiVRNetI44xI-ZftdA0opKzm_9RUTl8ZzPU5xSAswTHuS-BRev15A7xdmKxZj93GMt9QmbjHlzFLwnPwhwJzfjgTpcTu0kslcOL"/>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline text-lg font-bold tracking-tight text-on-surface">SOLO_LEVELER</h3>
+<div class="flex items-center justify-center w-4 h-4 bg-gradient-to-br from-primary/20 to-transparent rounded-full border border-primary/40">
+<span class="material-symbols-outlined text-[10px] text-primary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<p class="font-label text-[10px] text-primary tracking-wider">ALGO STRATEGIST</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label text-[11px] text-on-surface-variant block mb-1 uppercase">Win Rate</span>
+<span class="font-label text-xl font-bold text-tertiary">91.4%</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 mb-6">
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<span class="font-label text-[9px] text-on-surface-variant block mb-1 uppercase">Volume</span>
+<span class="font-label text-sm text-on-surface font-semibold">940K</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<span class="font-label text-[9px] text-on-surface-variant block mb-1 uppercase">Followers</span>
+<span class="font-label text-sm text-on-surface font-semibold">8.2K</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<span class="font-label text-[9px] text-on-surface-variant block mb-1 uppercase">Risk</span>
+<span class="font-label text-sm text-primary font-semibold">LOW</span>
+</div>
+</div>
+<button class="w-full py-3 bg-primary-container text-on-primary font-bold rounded-lg text-sm tracking-wide active:scale-[0.98] transition-all ease-out-expo">
+                    VIEW PORTFOLIO
+                </button>
+</div>
+</div>
+<!-- Featured Section (Bento Style) -->
+<section class="mt-12">
+<h2 class="font-['Cabinet_Grotesk'] text-2xl font-bold mb-6 tracking-tight text-on-surface">INSIDER ALPHA</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2 bg-gradient-to-br from-[#1c1c1a] to-[#131312] rounded-lg p-6 border border-primary/10 relative overflow-hidden h-48 flex flex-col justify-end">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay" data-alt="Abstract 3D digital visualization of interconnected data streams in teal and dark shades" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbEkypck2sFvR2YihTnAuEIaPmMPbtSeJMoSGID_1Yl9H99GC6yeE-6MuzAyOisoJhQ_gwuY-wojTnxyKdrcKd2aDPHcSDEIxk6h0IIrt7o2iw39UahD9UTyApL8w4pnQ5HYAl0uE-oeNjNVxrKefhnYmN_Y-62foCVYXXEO5Eg5IBN7ShYAPToTDgCcrHSmGKdvrVpzS_-kE60aq7kw4MABZ2YweSLJqVHYJzMPnHHBANWP2vCxDtIpf7FY3xqcaIMWG93UG4Hjxq"/>
+<span class="font-label text-[10px] text-primary mb-2 uppercase tracking-widest">Protocol News</span>
+<h4 class="font-headline text-2xl font-extrabold text-on-surface leading-none mb-4">OBSIDIAN MAINNET v4.2 LIVE</h4>
+</div>
+<div class="bg-surface-container-high rounded-lg p-4 border border-outline-variant/10 aspect-square flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary" data-icon="trending_up">trending_up</span>
+<div>
+<p class="font-label text-[10px] text-on-surface-variant uppercase mb-1">Total TVL</p>
+<p class="font-label text-xl font-bold text-on-surface">$2.4B</p>
+</div>
+</div>
+<div class="bg-surface-container-high rounded-lg p-4 border border-outline-variant/10 aspect-square flex flex-col justify-between">
+<span class="material-symbols-outlined text-tertiary" data-icon="bolt">bolt</span>
+<div>
+<p class="font-label text-[10px] text-on-surface-variant uppercase mb-1">TPS</p>
+<p class="font-label text-xl font-bold text-on-surface">140K</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#131312]/80 dark:bg-[#131312]/80 backdrop-blur-xl border-t border-[#3c4a46]/15 shadow-[0_-4px_24px_rgba(0,0,0,0.5)] flex justify-around items-center pt-2 pb-6 px-4">
+<a class="flex flex-col items-center justify-center text-[#3a3938] px-3 py-1 hover:text-[#e5e2df] transition-all duration-300 ease-out-expo scale-100 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-[+0.02em] uppercase mt-1">Live</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#2dd4bf] bg-gradient-to-b from-[#57f1db]/20 to-transparent rounded-lg px-3 py-1 scale-100 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-[+0.02em] uppercase mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3a3938] px-3 py-1 hover:text-[#e5e2df] transition-all duration-300 ease-out-expo scale-100 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-[+0.02em] uppercase mt-1">Analytic</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3a3938] px-3 py-1 hover:text-[#e5e2df] transition-all duration-300 ease-out-expo scale-100 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="notifications_none">notifications_none</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-[+0.02em] uppercase mt-1">Inbox</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3a3938] px-3 py-1 hover:text-[#e5e2df] transition-all duration-300 ease-out-expo scale-100 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-[+0.02em] uppercase mt-1">User</span>
+</a>
+</nav>
+<!-- FAB (Suppressed based on Explore screen intent if secondary, but included as it represents the core "Join/Action" for many creator pages) -->
+<!-- Let's follow suppression rules: Suppress if context is details/settings. Here it's Explore, so "Create/Post" would be the aligned action. Let's omit for high-end editorial feel as requested. -->
+</body></html>

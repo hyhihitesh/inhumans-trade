@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900&amp;f[]=satoshi@400,600&amp;f[]=jetbrains-mono@400,500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#0e0e0d",
+              "surface-container-low": "#1c1c1a",
+              "secondary-container": "#474744",
+              "error-container": "#93000a",
+              "secondary-fixed": "#e5e2df",
+              "surface-tint": "#3cddc7",
+              "on-error-container": "#ffdad6",
+              "on-surface-variant": "#bacac5",
+              "on-tertiary-fixed-variant": "#005321",
+              "inverse-on-surface": "#31302f",
+              "surface": "#131312",
+              "surface-variant": "#353533",
+              "secondary-fixed-dim": "#c8c6c3",
+              "tertiary-fixed-dim": "#4ae176",
+              "outline": "#859490",
+              "on-secondary-fixed": "#1c1c1a",
+              "secondary": "#c8c6c3",
+              "surface-container-high": "#2a2a29",
+              "on-primary-fixed-variant": "#005047",
+              "inverse-primary": "#006b5f",
+              "on-primary-fixed": "#00201c",
+              "on-surface": "#e5e2df",
+              "tertiary": "#61f587",
+              "primary-fixed-dim": "#3cddc7",
+              "on-error": "#690005",
+              "on-tertiary-container": "#005925",
+              "on-background": "#e5e2df",
+              "on-primary": "#003731",
+              "error": "#ffb4ab",
+              "primary-fixed": "#62fae3",
+              "surface-dim": "#131312",
+              "inverse-surface": "#e5e2df",
+              "on-primary-container": "#00574d",
+              "on-secondary-fixed-variant": "#474744",
+              "on-secondary-container": "#b7b5b2",
+              "surface-container-highest": "#353533",
+              "surface-bright": "#3a3938",
+              "primary-container": "#2dd4bf",
+              "on-tertiary": "#003915",
+              "on-secondary": "#31302e",
+              "on-tertiary-fixed": "#002109",
+              "tertiary-fixed": "#6bff8f",
+              "outline-variant": "#3c4a46",
+              "tertiary-container": "#3fd86e",
+              "background": "#131312",
+              "primary": "#57f1db",
+              "surface-container": "#20201e"
+            },
+            fontFamily: {
+              "headline": ["Cabinet Grotesk"],
+              "body": ["Satoshi"],
+              "label": ["JetBrains Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .ease-out-expo { transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
+      .glass-gradient {
+        background: radial-gradient(circle at center, rgba(87, 241, 219, 0.15) 0%, transparent 70%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#131312] dark:bg-[#131312] backdrop-blur-xl opacity-90 border-b border-[#3c4a46]/15 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#2dd4bf]" data-icon="terminal">terminal</span>
+<h1 class="font-['Cabinet_Grotesk'] font-extrabold tracking-tighter uppercase text-xl font-black tracking-[-0.04em] text-[#e5e2df] dark:text-[#e5e2df]">INHUMANS.IO</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-[#3a3938] transition-colors duration-200 ease-out-expo active:scale-95">
+<span class="material-symbols-outlined text-[#2dd4bf]" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-20 pb-28 px-4 min-h-screen max-w-md mx-auto">
+<!-- Freshness Filter / Segmented Control -->
+<section class="mb-8">
+<div class="flex items-end justify-between mb-4">
+<div>
+<p class="font-label text-label-sm text-primary uppercase tracking-widest mb-1">Signal Stream</p>
+<h2 class="font-headline text-headline-md leading-none">Activity</h2>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-1 bg-surface-container-lowest p-1 rounded-xl border border-outline-variant/15">
+<button class="py-2 text-xs font-label uppercase tracking-wider bg-surface-bright text-primary rounded-lg shadow-sm">All</button>
+<button class="py-2 text-xs font-label uppercase tracking-wider text-on-surface-variant hover:text-on-surface">Trades</button>
+<button class="py-2 text-xs font-label uppercase tracking-wider text-on-surface-variant hover:text-on-surface">System</button>
+</div>
+</section>
+<!-- Notification List -->
+<div class="space-y-3">
+<!-- HOT ALERT: High Freshness -->
+<div class="relative group">
+<div class="absolute -inset-0.5 bg-gradient-to-r from-primary/20 to-tertiary/20 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
+<div class="relative bg-surface-container-high p-4 rounded-xl border border-primary/20">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label text-[10px] text-primary uppercase font-bold tracking-tighter bg-primary/10 px-2 py-0.5 rounded">Hot Alert</span>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant">2M AGO</span>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest overflow-hidden flex-shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="Abstract 3D digital asset icon with glowing teal neon lines on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJnoeVUGSWYy7puCNyuVoCW286qu6Hx-UqWb0uzlG1FgLLSfTQb-jLBjCdATwzTQZ5Cri6yB0y_0v6jhQH2ylc_pVqppnaP1nJCuHBrUwWLjrRMrs0GFASD0tO0x1gw_Z-tvtMM8C52PkOtIZCz-oRrE2QDQcdMh771ZjTRdJJQzibXNch4UNz8gbYsUJrJxnA2N3nz7G4xodyf6uta0klHG60KNufu0p6yA4CAZv0DHU9qx6232PRH41KCfi0utiAQGzVTQp9okl1"/>
+</div>
+<div>
+<h3 class="font-headline text-lg leading-tight text-on-surface">SOL/USDT Long</h3>
+<p class="font-body text-sm text-on-surface-variant">Entry: <span class="font-label text-on-surface">$142.45</span> • Leverage: <span class="font-label text-primary">20x</span></p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="flex items-center justify-center gap-2 py-2.5 bg-primary-container text-on-primary font-bold rounded-lg text-sm ease-out-expo active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+                            Copy Trade
+                        </button>
+<button class="flex items-center justify-center gap-2 py-2.5 bg-surface-bright text-on-surface font-bold rounded-lg text-sm ease-out-expo active:scale-95">
+                            Details
+                        </button>
+</div>
+</div>
+</div>
+<!-- WARM ALERT: Medium Freshness -->
+<div class="bg-surface-container p-4 rounded-xl border border-outline-variant/10 hover:border-outline-variant/30 transition-all">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-tertiary"></span>
+<span class="font-label text-[10px] text-tertiary uppercase font-bold tracking-tighter bg-tertiary/10 px-2 py-0.5 rounded">Warm Signal</span>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant">14M AGO</span>
+</div>
+<div class="flex gap-4 mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest overflow-hidden flex-shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="Ethereum logo architectural structure in a dark cinematic foggy environment with green lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpIV0C2FpZziag4QnsfO3namxt3YUHnA8NSDAz8GhqckFsQqVvgu-SQBmfaPVnzytlJ-Bm1wPEhWLU-Sl8BKLAsOrsLK1Ye74NKD0yrl9EDsnKQ_Vufm7sk4rMwgBZ6-ekuRHOzl7owuvd3XfrdbXFFLKaIQgjWUvYRHVDu_ywK4hyPtClUcAxGYT89hUaHo3D5nW9xUarQvA35xh3Sgw2g4WG_QYQVVKqzk3TT_a_yQBn7Tt-x0AYmNUDw3rztOTadgJCu7reoeVq"/>
+</div>
+<div>
+<h3 class="font-headline text-lg leading-tight text-on-surface">ETH/USDT Short</h3>
+<p class="font-body text-sm text-on-surface-variant">Volume Spike Detected <span class="text-tertiary">+45%</span></p>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-2.5 bg-surface-container-highest text-on-surface font-bold rounded-lg text-sm ease-out-expo active:scale-95 border border-outline-variant/20">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+                    Execute Fast-Swap
+                </button>
+</div>
+<!-- SYSTEM EVENT -->
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/5">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="settings_ethernet">settings_ethernet</span>
+<span class="font-label text-[10px] text-on-surface-variant uppercase tracking-tighter">System Event</span>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant">42M AGO</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-1">Vault synchronization complete. Your <span class="text-primary font-label">#X82-B</span> node is now live on Mainnet cluster.</p>
+</div>
+<!-- COLD ALERT: Low Freshness -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/5 opacity-70">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-secondary-container"></span>
+<span class="font-label text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter bg-surface-variant/30 px-2 py-0.5 rounded">Archived</span>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant">1H AGO</span>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest overflow-hidden flex-shrink-0 border border-outline-variant/20 grayscale">
+<img class="w-full h-full object-cover" data-alt="Abstract geometric gold shapes floating in a dark void with dramatic contrasting shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLfojvLTYn5HJREsRo28AdP1CqYNA-wIOM0TVfWaXf5_W4vG5YnScrjNlzknCAVQ9Dew1DYs_AeGoGPeIAKXsyQjejYul0491qBy7B4QS6qL8V26-PZ4fDrfDUJ1iRb1lMdvdMhY4FDeZORoW5OL2Bc9hIYqu4VCF87BDIMX0Iy0sisoYx7xm400MLOGUApFyuEzJzVbeMmDMcgnIdhUAWB0SMHUlxNhaCkajREEXNNsJ7_QGrBFHdw9l8nSop0rqoE8d-wr7j2TgM"/>
+</div>
+<div>
+<h3 class="font-headline text-lg leading-tight text-on-secondary-container">BTC/USDT Breakout</h3>
+<p class="font-body text-sm text-on-surface-variant">Target 1 Hit: <span class="font-label">$64,200</span></p>
+</div>
+</div>
+</div>
+<!-- Another HOT ALERT -->
+<div class="relative group">
+<div class="absolute -inset-0.5 bg-gradient-to-r from-error/20 to-primary/20 rounded-xl blur opacity-30"></div>
+<div class="relative bg-surface-container-high p-4 rounded-xl border border-error/20">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-error animate-ping"></span>
+<span class="font-label text-[10px] text-error uppercase font-bold tracking-tighter bg-error/10 px-2 py-0.5 rounded">High Volatility</span>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant">JUST NOW</span>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="p-3 bg-error/10 rounded-full border border-error/20">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div>
+<h3 class="font-headline text-lg leading-tight text-on-surface">Liquidation Risk</h3>
+<p class="font-body text-sm text-on-surface-variant">PEPE/USDT Margin Ratio <span class="text-error font-label">88%</span></p>
+</div>
+</div>
+<button class="w-full py-2.5 bg-error-container text-on-error-container font-bold rounded-lg text-sm ease-out-expo active:scale-95">
+                        Add Collateral
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center pt-2 pb-6 px-4 bg-[#131312]/80 dark:bg-[#131312]/80 backdrop-blur-xl border-t border-[#3c4a46]/15 shadow-[0_-4px_24px_rgba(0,0,0,0.5)] z-50 rounded-t-lg">
+<a class="flex flex-col items-center justify-center text-[#3a3938] px-3 py-1 hover:text-[#e5e2df] transition-all duration-300 ease-out-expo scale-100 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="sensors">sensors</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-[+0.02em] uppercase">Live</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3a3938] px-3 py-1 hover:text-[#e5e2df] transition-all duration-300 ease-out-expo scale-100 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="explore">explore</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-[+0.02em] uppercase">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3a3938] px-3 py-1 hover:text-[#e5e2df] transition-all duration-300 ease-out-expo scale-100 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="insights">insights</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-[+0.02em] uppercase">Analytic</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#2dd4bf] bg-gradient-to-b from-[#57f1db]/20 to-transparent rounded-lg px-3 py-1 transition-all duration-300 ease-out-expo scale-100 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="notifications_none" style="font-variation-settings: 'FILL' 1;">notifications_none</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-[+0.02em] uppercase">Inbox</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3a3938] px-3 py-1 hover:text-[#e5e2df] transition-all duration-300 ease-out-expo scale-100 active:scale-90" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['JetBrains_Mono'] text-[10px] tracking-[+0.02em] uppercase">User</span>
+</a>
+</nav>
+</body></html>

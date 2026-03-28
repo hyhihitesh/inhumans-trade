@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>INHUMANS.IO | Creator Live Room</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error": "#ffb4ab",
+              "surface": "#131312",
+              "inverse-primary": "#006b5f",
+              "surface-dim": "#131312",
+              "on-tertiary-fixed-variant": "#005321",
+              "outline": "#859490",
+              "on-secondary-fixed-variant": "#474744",
+              "outline-variant": "#3c4a46",
+              "secondary-container": "#474744",
+              "primary-fixed-dim": "#3cddc7",
+              "on-secondary": "#31302e",
+              "on-primary-container": "#00574d",
+              "error-container": "#93000a",
+              "secondary-fixed-dim": "#c8c6c3",
+              "on-primary": "#003731",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#4ae176",
+              "primary-container": "#2dd4bf",
+              "on-surface-variant": "#bacac5",
+              "on-primary-fixed-variant": "#005047",
+              "surface-container-lowest": "#0e0e0d",
+              "surface-container-low": "#1c1c1a",
+              "surface-container-high": "#2a2a29",
+              "surface-container": "#20201e",
+              "primary": "#57f1db",
+              "inverse-surface": "#e5e2df",
+              "surface-tint": "#3cddc7",
+              "surface-variant": "#353533",
+              "tertiary-container": "#3fd86e",
+              "inverse-on-surface": "#31302f",
+              "primary-fixed": "#62fae3",
+              "secondary": "#c8c6c3",
+              "secondary-fixed": "#e5e2df",
+              "surface-container-highest": "#353533",
+              "tertiary-fixed": "#6bff8f",
+              "on-error": "#690005",
+              "on-tertiary-container": "#005925",
+              "on-tertiary": "#003915",
+              "on-secondary-fixed": "#1c1c1a",
+              "on-primary-fixed": "#00201c",
+              "surface-bright": "#3a3938",
+              "on-background": "#e5e2df"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Manrope"],
+              "label": ["JetBrains Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #131312;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #3c4a46;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-hidden">
+<!-- Left SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-6 bg-[#131312] dark:bg-[#131312] h-screen w-64 border-r border-[#3c4a46]/15 z-50">
+<div class="px-6 mb-8">
+<h1 class="text-2xl font-black tracking-[-0.04em] text-[#e5e2df] font-['Space_Grotesk']">INHUMANS.IO</h1>
+<p class="text-[10px] font-['Space_Grotesk'] tracking-widest text-[#2dd4bf] uppercase opacity-80 mt-1">Broker Live</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-6 py-3 font-['Space_Grotesk'] tracking-tighter uppercase font-bold text-sm text-[#2dd4bf] border-r-2 border-[#2dd4bf] bg-gradient-to-r from-[#2dd4bf]/10 to-transparent transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="terminal">terminal</span>
+                Terminal
+            </a>
+<a class="flex items-center px-6 py-3 font-['Space_Grotesk'] tracking-tighter uppercase font-bold text-sm text-[#a8a29e] hover:text-[#e5e2df] hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="account_balance_wallet">account_balance_wallet</span>
+                Portfolio
+            </a>
+<a class="flex items-center px-6 py-3 font-['Space_Grotesk'] tracking-tighter uppercase font-bold text-sm text-[#a8a29e] hover:text-[#e5e2df] hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="receipt_long">receipt_long</span>
+                Orders
+            </a>
+<a class="flex items-center px-6 py-3 font-['Space_Grotesk'] tracking-tighter uppercase font-bold text-sm text-[#a8a29e] hover:text-[#e5e2df] hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="monitoring">monitoring</span>
+                Analytics
+            </a>
+<a class="flex items-center px-6 py-3 font-['Space_Grotesk'] tracking-tighter uppercase font-bold text-sm text-[#a8a29e] hover:text-[#e5e2df] hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="px-4 mb-6">
+<button class="w-full bg-primary-container text-on-primary py-3 px-4 rounded-lg font-headline font-bold text-sm uppercase tracking-tight hover:brightness-110 active:opacity-80 transition-all">
+                New Trade
+            </button>
+</div>
+<div class="mt-auto border-t border-[#3c4a46]/10 pt-4">
+<a class="flex items-center px-6 py-3 font-['Space_Grotesk'] tracking-tighter uppercase font-bold text-sm text-[#a8a29e] hover:text-[#e5e2df] transition-colors" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="help_outline">help_outline</span>
+                Support
+            </a>
+<a class="flex items-center px-6 py-3 font-['Space_Grotesk'] tracking-tighter uppercase font-bold text-sm text-[#a8a29e] hover:text-[#e5e2df] transition-colors" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="notifications_active">notifications_active</span>
+                Alerts
+            </a>
+<div class="mt-4 px-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQqqXM5U0ByIvwSNEBRyW6mv6j9bt4aT_8G5nXB5OiL4VEdKs8p_7zMLfWgIl1LkYY5YgEDOwRUm5saTKNCDNgnKzWc0rXQvVAq6C_wBFgdPVELnHPqK1bXo7f59MQUYwat-CIOWd30gf8IAdKIloGDDd1orreuQZNThfi8fqdX5dHFgi1yoHnedugBZBzHkRl0B-qWkoxdSyMTc6t3cyPNe_B2z_jS4uNpp95UqYAD0L9gFwRg-rPXHAX68i1tQXM06JGPaKUTPVX"/>
+</div>
+<div class="flex flex-col">
+<span class="text-[11px] font-bold text-on-surface">Arjun Sharma</span>
+<span class="text-[9px] text-primary">Pro Member</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Live Content -->
+<main class="ml-64 h-screen grid grid-cols-12 grid-rows-12 gap-1 p-1 bg-surface-container-lowest">
+<!-- Header Strip -->
+<header class="col-span-12 row-span-1 bg-surface border-b border-outline-variant/10 flex items-center justify-between px-6">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse shadow-[0_0_8px_rgba(255,180,171,0.6)]"></span>
+<span class="font-label text-xs font-bold text-on-surface uppercase tracking-widest">Live: USD/JPY Scalping</span>
+</div>
+<div class="h-4 w-[1px] bg-outline-variant/30"></div>
+<div class="flex items-center gap-4">
+<span class="font-label text-[10px] text-outline uppercase tracking-tighter">Market Open</span>
+<span class="font-label text-[11px] text-primary font-bold">154.212</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-high px-3 py-1 rounded border border-outline-variant/10 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary" data-icon="group">group</span>
+<span class="font-label text-xs font-bold">142</span>
+</div>
+<button class="bg-surface-bright/50 text-on-surface hover:bg-surface-bright px-4 py-1.5 rounded text-xs font-headline font-bold uppercase tracking-tight transition-all">
+                    Upgrade Subscription
+                </button>
+</div>
+</header>
+<!-- Video/Chart Area (Bento Grid Main) -->
+<section class="col-span-9 row-span-10 bg-surface-container overflow-hidden relative group">
+<div class="absolute inset-0 z-0 opacity-40">
+<img class="w-full h-full object-cover grayscale" data-alt="Dark trading terminal interface showing complex financial charts and candlestick patterns with neon teal overlays" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXjIbrma3j7_j19miwX2-o5Teh00SsB6_XnjZ_QNOOcQtoKeQyF3ZhLklAxCyAiNoEU0lEWS7FTg_PBDUCYudMEEzvcgP0Zo2VlMt1W3vpMtcq_9C5dmGm3T2wh0eDl5nnH2vMSVVgWD1mkhvOhZPYGe0By1sliOJukoZQV4qNvbZcRmqAS6uWOYD7oWQkShSi-n5_FbsPsFgI3pC6-Ilr1uS9K1VhE1uY8Vt0DK5cO5ZGwl4NE9MT3qR6-V3fLkppD8Bj9jkhKU7I"/>
+</div>
+<!-- Mock TradingView Embed Overlay -->
+<div class="absolute inset-0 z-10 bg-gradient-to-b from-surface/80 to-transparent flex flex-col p-8">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-headline text-4xl font-extrabold text-on-surface tracking-tighter">BITCOIN / USD</h2>
+<p class="font-label text-sm text-primary">O: 64,212.10 | H: 65,110.00 | L: 63,900.22 | C: 64,882.45</p>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-surface-container-highest/60 text-outline text-[10px] font-bold rounded">15m</span>
+<span class="px-2 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded border border-primary/30">Live Chart</span>
+</div>
+</div>
+<!-- Simulated Chart UI -->
+<div class="mt-auto flex items-end gap-1 h-32 opacity-80">
+<div class="flex-1 bg-surface-bright/20 h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-surface-bright/20 h-[45%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/30 h-[70%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/50 h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-surface-bright/10 h-[30%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-[50%] rounded-t-sm"></div>
+</div>
+</div>
+</section>
+<!-- Creator Sidebar Feed -->
+<aside class="col-span-3 row-span-10 flex flex-col gap-1 overflow-hidden">
+<!-- Webcam Feed -->
+<div class="h-48 bg-surface-container-high relative overflow-hidden group">
+<img class="w-full h-full object-cover" data-alt="Portrait of a young professional Indian male trader looking focused at multiple monitors in a dark high-tech home office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn8w-NZr3izDc4oKK5jNw14lpyZ6DV7P8o_oaMtIox_u9ydkNJi8TNJSaDA-78d4Gzzq7IzrQQnxiBE7LKjrUX84CEhc1-i_C2mNhQC1Mnn58eokEmbAA9sQO7DEZiWAFR1AXgeDE6wN5FtwSLWwlwYdKnziYPleimlI6oUTrbH6sEeV6CGQD04jwBAe4x3bqbyHNQDlVHgGwRTCUr_IgofLg4tLsDnr07s6Bons-EazDIyB3h2Pj97NqoWOiQ4FPuqDUqMGNvYm1N"/>
+<div class="absolute bottom-3 left-3 flex items-center gap-2 bg-surface/80 backdrop-blur px-2 py-1 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span class="font-headline text-[10px] font-bold text-on-surface uppercase tracking-widest">Arjun Sharma</span>
+</div>
+<div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-surface/80 p-1.5 rounded-full text-on-surface"><span class="material-symbols-outlined text-sm" data-icon="fullscreen">fullscreen</span></button>
+</div>
+</div>
+<!-- Trade Execution Log -->
+<div class="flex-1 bg-surface flex flex-col overflow-hidden border-y border-outline-variant/10">
+<div class="p-4 border-b border-outline-variant/10 flex justify-between items-center">
+<span class="font-headline text-[11px] font-bold text-outline uppercase tracking-widest">Execution Log</span>
+<span class="font-label text-[10px] text-tertiary">Connected</span>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-3 font-label">
+<div class="flex justify-between items-center text-[11px]">
+<div class="flex flex-col">
+<span class="text-tertiary font-bold uppercase">Buy BTC/USD</span>
+<span class="text-outline text-[9px]">0.421 BTC @ 64,880</span>
+</div>
+<span class="text-on-surface">14:22:10</span>
+</div>
+<div class="flex justify-between items-center text-[11px]">
+<div class="flex flex-col">
+<span class="text-error font-bold uppercase">Sell ETH/USD</span>
+<span class="text-outline text-[9px]">12.50 ETH @ 3,420</span>
+</div>
+<span class="text-on-surface">14:20:45</span>
+</div>
+<div class="flex justify-between items-center text-[11px] opacity-60">
+<div class="flex flex-col">
+<span class="text-tertiary font-bold uppercase">Buy SOL/USD</span>
+<span class="text-outline text-[9px]">140.00 SOL @ 152.1</span>
+</div>
+<span class="text-on-surface">14:18:22</span>
+</div>
+<div class="flex justify-between items-center text-[11px] opacity-40">
+<div class="flex flex-col">
+<span class="text-tertiary font-bold uppercase">Buy BTC/USD</span>
+<span class="text-outline text-[9px]">0.10 BTC @ 64,500</span>
+</div>
+<span class="text-on-surface">14:15:01</span>
+</div>
+</div>
+</div>
+<!-- Live Chat -->
+<div class="h-64 bg-surface-container flex flex-col overflow-hidden">
+<div class="p-3 border-b border-outline-variant/5 bg-surface-container-high/30 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-headline text-[10px] font-bold uppercase tracking-widest text-primary">Subscribers Only</span>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-4">
+<div class="flex gap-2">
+<span class="text-primary font-bold text-[11px] font-label">Dev_K:</span>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">Arjun, are we holding through the NY open?</p>
+</div>
+<div class="flex gap-2">
+<span class="text-secondary font-bold text-[11px] font-label">Sarah_T:</span>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">That last entry was surgical. Wow.</p>
+</div>
+<div class="flex gap-2">
+<span class="text-primary font-bold text-[11px] font-label">Quantum:</span>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">Volume profile looks bullish here.</p>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest">
+<div class="relative">
+<input class="w-full bg-surface text-[11px] border-none rounded py-2 px-3 focus:ring-1 focus:ring-primary/40 placeholder:text-outline/50" placeholder="Send a message..." type="text"/>
+<button class="absolute right-2 top-1.5 text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Bottom Stream Controls -->
+<footer class="col-span-12 row-span-1 bg-[#0a0a09] border-t border-outline-variant/10 flex items-center justify-between px-8">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-bright text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-bright text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="videocam">videocam</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-bright text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant/20 mx-2"></div>
+<div class="flex items-center gap-3">
+<button class="bg-surface-bright/40 hover:bg-surface-bright px-4 py-2 rounded flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="ios_share">ios_share</span>
+                        Share
+                    </button>
+<button class="bg-surface-bright/40 hover:bg-surface-bright px-4 py-2 rounded flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="screen_share">screen_share</span>
+                        Source
+                    </button>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex flex-col items-end">
+<span class="font-label text-[10px] text-outline uppercase tracking-widest">Uptime</span>
+<span class="font-label text-sm font-bold text-on-surface">02:44:12</span>
+</div>
+<button class="bg-error/10 hover:bg-error/20 border border-error/30 text-error px-6 py-2.5 rounded font-headline font-black text-xs uppercase tracking-widest transition-all">
+                    End Stream
+                </button>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB (Hidden as per hierarchy for Details/Complex task screen) -->
+<!-- Toast Notification (Top Right) -->
+<div class="fixed top-20 right-8 z-[60] bg-surface-container-high/90 backdrop-blur-xl border-l-4 border-tertiary p-4 rounded-r-lg shadow-2xl max-w-xs transform translate-y-0 transition-transform">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<h4 class="text-xs font-bold text-on-surface uppercase tracking-tight">Trade Verified</h4>
+<p class="text-[10px] text-on-surface-variant mt-1">Creator entry confirmed at 154.212. Signal broadcasted to followers.</p>
+</div>
+</div>
+</div>
+</body></html>

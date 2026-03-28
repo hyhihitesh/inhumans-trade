@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Manrope:wght@200..800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed": "#62fae3",
+                        "on-tertiary-container": "#005925",
+                        "surface-container": "#20201e",
+                        "primary-container": "#2dd4bf",
+                        "outline": "#859490",
+                        "surface-container-lowest": "#0e0e0d",
+                        "primary-fixed-dim": "#3cddc7",
+                        "tertiary-container": "#3fd86e",
+                        "tertiary": "#61f587",
+                        "tertiary-fixed": "#6bff8f",
+                        "background": "#131312",
+                        "secondary-container": "#474744",
+                        "inverse-primary": "#006b5f",
+                        "secondary-fixed": "#e5e2df",
+                        "on-primary-fixed-variant": "#005047",
+                        "surface-tint": "#3cddc7",
+                        "on-secondary-fixed": "#1c1c1a",
+                        "secondary": "#c8c6c3",
+                        "on-secondary": "#31302e",
+                        "on-primary-container": "#00574d",
+                        "outline-variant": "#3c4a46",
+                        "surface-container-high": "#2a2a29",
+                        "secondary-fixed-dim": "#c8c6c3",
+                        "surface-dim": "#131312",
+                        "surface-container-highest": "#353533",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#002109",
+                        "error": "#ffb4ab",
+                        "primary": "#57f1db",
+                        "surface": "#131312",
+                        "on-surface": "#e5e2df",
+                        "on-primary-fixed": "#00201c",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "inverse-surface": "#e5e2df",
+                        "on-background": "#e5e2df",
+                        "surface-variant": "#353533",
+                        "on-surface-variant": "#bacac5",
+                        "on-secondary-fixed-variant": "#474744",
+                        "on-tertiary": "#003915",
+                        "surface-container-low": "#1c1c1a",
+                        "on-secondary-container": "#b7b5b2",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "on-primary": "#003731",
+                        "inverse-on-surface": "#31302f",
+                        "surface-bright": "#3a3938"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"],
+                        "mono": ["JetBrains Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ease-out-expo {
+            transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body antialiased">
+<!-- TopAppBar -->
+<header class="bg-[#131312] dark:bg-[#131312] backdrop-blur-xl opacity-90 fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-none">
+<div class="flex items-center gap-4">
+<button class="text-[#e5e2df] hover:opacity-80 transition-opacity ease-out-expo duration-200 active:scale-95 min-w-[44px] min-h-[44px] flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-xl font-black text-[#2dd4bf] tracking-widest font-['Cabinet_Grotesk'] font-extrabold tracking-tighter uppercase">INHUMANS.IO</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-[#e5e2df] hover:opacity-80 transition-opacity ease-out-expo duration-200 active:scale-95 min-w-[44px] min-h-[44px] flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man with sharp features against a dark, moody studio background with subtle teal rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRDcYqxuCFLrzYSmBXSus9ySrP-QAhYx6zhy5dfVSugJuqrdZTjhdycWPw4UYq3xh5oRBxtaxgNN-ZontzEceK8hKlTaGt2XQG5kdmo0mZajJIIvkKcZco7ERo9M2Y7Ce-Nk-Dn0egnA-2s7MO4QCvQYx0Hr6u56L9ezdu7nDjYBnuzUhwKT7gfcmmSF_iMQvOh1VihefnPe-6gd4h1z39A9ExbeFsLRYwcrwZo0Bs6Em-31--cio1WbEBXoBqeuMCfWQqMd1XIrB9"/>
+</div>
+</div>
+</div>
+<div class="bg-[#1c1c1a] h-[1px] w-full bottom-0 absolute"></div>
+</header>
+<main class="pt-20 pb-24 px-4 max-w-md mx-auto space-y-6">
+<!-- Horizontal Quick Stats -->
+<section class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+<div class="flex-shrink-0 bg-surface-container-low p-4 rounded-xl min-w-[140px] border-l-2 border-tertiary">
+<p class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider mb-1">Today's P&amp;L</p>
+<h3 class="font-mono text-tertiary text-xl font-bold">+₹42,850.00</h3>
+<p class="text-[10px] font-mono text-tertiary/60">+4.2%</p>
+</div>
+<div class="flex-shrink-0 bg-surface-container-low p-4 rounded-xl min-w-[140px] border-l-2 border-primary">
+<p class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider mb-1">Active Copiers</p>
+<h3 class="font-mono text-primary text-xl font-bold">1,248</h3>
+<p class="text-[10px] font-mono text-primary/60">Ranked #12</p>
+</div>
+<div class="flex-shrink-0 bg-surface-container-low p-4 rounded-xl min-w-[140px] border-l-2 border-outline-variant">
+<p class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider mb-1">Win Rate</p>
+<h3 class="font-mono text-on-surface text-xl font-bold">78.5%</h3>
+<p class="text-[10px] font-mono text-on-surface-variant/60">Last 30 days</p>
+</div>
+</section>
+<!-- Compact Composer Row -->
+<section class="bg-surface-container rounded-xl p-3 border border-outline-variant/10">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man with sharp features against a dark, moody studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq_letqwv4sVH-isCBMDkbGjG75gE6lfsoAjujoXMmf6A8M8OgXm2kR1nSOKqifSiKgDF7ocJVCon_PY9alYNGaqpD_qg-VCsbp18AnrebKFDsW51njeqnl9TsdUjCXSCpEHYDUSfGWnKQKfXx69Bnp0_WpSgCwsVs4ukfe18wWwzyNfZFdva1t_WTl0_oSgt7Hrlw7p3rcdMoCpDGXp7LZZV_0W_OWyTUp_ziEsBmWEpLr0d3AG3eEcytrqVvrl35y-M99W3TCGEs"/>
+</div>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-on-surface placeholder:text-on-surface-variant/50" placeholder="Write a market thought..." type="text"/>
+</div>
+<div class="flex items-center justify-between border-t border-outline-variant/10 pt-3">
+<div class="flex gap-2">
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-highest rounded-lg text-xs font-semibold text-on-surface-variant hover:text-primary transition-colors min-h-[44px]">
+<span class="material-symbols-outlined text-sm">show_chart</span>
+<span>Chart</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-highest rounded-lg text-xs font-semibold text-on-surface-variant hover:text-primary transition-colors min-h-[44px]">
+<span class="material-symbols-outlined text-sm">emergency_recording</span>
+<span>Go Live</span>
+</button>
+</div>
+<button class="bg-primary-container text-on-primary-container px-5 py-2 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity active:scale-95">
+                    Post
+                </button>
+</div>
+</section>
+<!-- Verified Trade Card: Active -->
+<section class="relative bg-surface-container rounded-xl overflow-hidden border border-primary/20">
+<div class="absolute top-0 right-0 p-3">
+<div class="flex items-center gap-1.5 bg-primary/10 px-2 py-1 rounded-full border border-primary/20">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">Live Trade</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex items-start gap-4 mb-4">
+<div class="bg-surface-container-high p-3 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">trending_up</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg text-on-surface tracking-tight">NIFTY 24500 CE</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] font-mono text-primary-container border border-primary/20">Zerodha Verified</span>
+<span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-widest">Entry: 142.50</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-5">
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<p class="text-[10px] font-mono text-on-surface-variant uppercase mb-1">Current P&amp;L</p>
+<p class="text-2xl font-mono font-bold text-tertiary">+₹12,400</p>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<p class="text-[10px] font-mono text-on-surface-variant uppercase mb-1">Copied By</p>
+<p class="text-2xl font-mono font-bold text-on-surface">412</p>
+</div>
+</div>
+<div class="flex items-center justify-between gap-3">
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border-2 border-surface-container" data-alt="close up headshot of person" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTpZJhxNQKk9popfy3BOz8wU9Ei2mBi3yMsCawKl8FkymGa9EHRO9Sa--sLPiOJBsnbWOVEHxPrWBh21t-C0GDytqjyYdwZ6Rv7EkcZCg1WLv2Wd7tL4EFpuJBn9swm8cwfONF2gtHdpwY77Cpy2xlae4oib96F-mfP3GzOEqhojLfkO2zSpAHSvU8UZiyaJjeYqeSSgTrvEnVL06BRs1zK4o1o61iMnlfeEIdlkC-czhzlEdqLQPmlpw3J8-7vSW-pzogMyGKVdpP"/>
+<img class="w-6 h-6 rounded-full border-2 border-surface-container" data-alt="close up headshot of person" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSJmykj5iqPnQ6PWkD8DVFM3YKXQ2AMbkNglsT7pT4oNjkYJbsOF5HijMr7eM2oLBUizoalzXgsfYzToEeFaXdVMBqW94uC22JvmE0PrNudgpqJPI4xHTSeQmkA8XTTdP0fwqV2XL0ajMNI9rSYa6m5tCiJr0Otut7UQ-soQ_Mql7RFmFevhLRvH2oso02WHOOt1gtZJdUd7aJRvisVxrxGbduylzJtIIE8oD9HX8_2L_Y2Q5sM6NSsz5TxGnI6-hp0shZyCY47e2h"/>
+<img class="w-6 h-6 rounded-full border-2 border-surface-container" data-alt="close up headshot of person" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMvDWlXgR-jOcjStp-7_FKGiTM9EkmIGRQxHZX9CSFbIxTopRtLak3f59GhilqoL2bda2vwIZm6AmkwHMHHbOfGwTCHYw4j0SLX9lHZDqnFtQ1sLyM4nwkMcXRO-q_fIO9HQEeZuQI34WYoebn1bJ92c_tK7qFWK10uui0o_TXXgBMmH_FGtgZAx75wcT6Pq3MVtsLZ6ky-WK60iy-0kYcRfJJ-pHpi2t9H6Mrat64JxvQhuBsGqEs2WzVjKLEvVePEnIJLy4DwG5j"/>
+<div class="w-6 h-6 rounded-full border-2 border-surface-container bg-surface-container-highest flex items-center justify-center text-[8px] font-bold text-on-surface-variant">+409</div>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-black text-xs uppercase tracking-widest flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">content_copy</span>
+                        Copy Trade
+                    </button>
+</div>
+</div>
+</section>
+<!-- Historical Trade Card -->
+<section class="bg-surface-container rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-start gap-4">
+<div class="bg-surface-container-high p-3 rounded-lg">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl">history</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg text-on-surface tracking-tight">RELIANCE AUG FUT</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] font-mono text-on-surface-variant border border-outline-variant/20">Closed 2h ago</span>
+<span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] font-mono text-primary-container border border-primary/20">Zerodha Verified</span>
+</div>
+</div>
+</div>
+<button class="text-on-surface-variant min-w-[44px] min-h-[44px] flex items-center justify-center">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-5">
+<div class="bg-surface-container-lowest p-2 rounded-lg text-center">
+<p class="text-[8px] font-mono text-on-surface-variant uppercase mb-1">Entry</p>
+<p class="text-xs font-mono font-bold text-on-surface">2,450.20</p>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded-lg text-center">
+<p class="text-[8px] font-mono text-on-surface-variant uppercase mb-1">Exit</p>
+<p class="text-xs font-mono font-bold text-on-surface">2,482.15</p>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded-lg text-center">
+<p class="text-[8px] font-mono text-on-surface-variant uppercase mb-1">Net P&amp;L</p>
+<p class="text-xs font-mono font-bold text-tertiary">+1.3%</p>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-outline-variant/10 pt-4">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm">favorite</span>
+<span class="font-mono">1.2k</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm">comment</span>
+<span class="font-mono">84</span>
+</div>
+</div>
+<p class="text-[10px] font-mono text-on-surface-variant uppercase">Total Profit: <span class="text-tertiary">₹34,150</span></p>
+</div>
+</div>
+</section>
+<!-- Educational Content / Secondary Feed Type -->
+<section class="bg-surface-container rounded-xl overflow-hidden border border-outline-variant/5">
+<div class="h-40 w-full relative">
+<img alt="Market Analysis" class="w-full h-full object-cover" data-alt="abstract digital financial chart with glowing lines and technical analysis patterns over a dark background with teal and violet light trails" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJXnM07mC-qyd_aEQ332RquERXf-S0H2afiedGnJY2D2Rr7S4GgyE5SJRdKhT65nAJkcfrHO97SwWnHst_NmrAr1AsFqfrjri8TQSknK5RSDcBEx58hAZKysXwidIHD3n_Ov1HA7RKz6y8WFO8FbBcPMjSo_12a0t0Yw8hXl3U85gurEhKb_s13_bPEvI1zIZXbnrhZXh8mRoieZStVjumwkiWAD-YOGyqhymBv1GFFG4NH_f6vX1zxXzG9PJmlA2D89a7uLfHUhnp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent"></div>
+<div class="absolute bottom-3 left-4">
+<span class="bg-primary/20 backdrop-blur-md text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest border border-primary/30">Analysis</span>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-headline font-bold text-md text-on-surface mb-2 leading-snug">Why the NIFTY breakout might hold despite global volatility</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2 mb-4">The structural buildup in heavyweights like HDFC and Reliance suggests that the current range expansion is backed by volume...</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full overflow-hidden">
+<img alt="Author" class="w-full h-full object-cover" data-alt="portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvpgijlK2eQWhwTT0ccpS5rIG35hLOUTZltG_4ZR39PWMqn-_S58d5MOAZqkmd-aSecEFrWMUARqAcwOkvl_HSQlxjzR48pvntZY3YSXQqCKiueHOHBHyuMshA2xqJjHnm9u2fF8k44b5p-E9CkshWpCflAHfdOPuHmYYyhuSm83KbL0SuuRJBDSl119s7lhzBko8iIzElWPRjqDvSjjPy7B3ahxbzw14xkZrBIwaiIU89v_q6gs3BoHgNJgbpCxx8K6pUcWigyR0C"/>
+</div>
+<span class="text-xs font-bold text-on-surface">Alex Rivera</span>
+</div>
+<span class="text-[10px] font-mono text-on-surface-variant uppercase">4 min read</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-[#131312] dark:bg-[#131312] backdrop-blur-md fixed bottom-0 left-0 w-full flex justify-around items-center pb-safe px-4 z-50 border-t border-[#1c1c1a] shadow-[0_-4px_24px_rgba(0,0,0,0.5)]">
+<!-- Feed (Active) -->
+<a class="flex flex-col items-center justify-center text-[#2dd4bf] bg-gradient-to-t from-[#2dd4bf1a] to-transparent pt-2 pb-1 min-w-[64px] min-h-[56px] transition-all ease-out-expo duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dynamic_feed</span>
+<span class="font-['Satoshi'] text-[10px] font-semibold uppercase tracking-widest mt-1">Feed</span>
+</a>
+<!-- Portfolio -->
+<a class="flex flex-col items-center justify-center text-[#e5e2df] opacity-40 pt-2 pb-1 min-w-[64px] min-h-[56px] transition-all hover:text-[#2dd4bf] hover:opacity-100 ease-out-expo duration-300" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Satoshi'] text-[10px] font-semibold uppercase tracking-widest mt-1">Portfolio</span>
+</a>
+<!-- Explore -->
+<a class="flex flex-col items-center justify-center text-[#e5e2df] opacity-40 pt-2 pb-1 min-w-[64px] min-h-[56px] transition-all hover:text-[#2dd4bf] hover:opacity-100 ease-out-expo duration-300" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-['Satoshi'] text-[10px] font-semibold uppercase tracking-widest mt-1">Explore</span>
+</a>
+<!-- Alerts -->
+<a class="flex flex-col items-center justify-center text-[#e5e2df] opacity-40 pt-2 pb-1 min-w-[64px] min-h-[56px] transition-all hover:text-[#2dd4bf] hover:opacity-100 ease-out-expo duration-300" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="font-['Satoshi'] text-[10px] font-semibold uppercase tracking-widest mt-1">Alerts</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-[#e5e2df] opacity-40 pt-2 pb-1 min-w-[64px] min-h-[56px] transition-all hover:text-[#2dd4bf] hover:opacity-100 ease-out-expo duration-300" href="#">
+<span class="material-symbols-outlined">person_outline</span>
+<span class="font-['Satoshi'] text-[10px] font-semibold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

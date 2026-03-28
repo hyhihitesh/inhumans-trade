@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error": "#ffb4ab",
+              "surface": "#131312",
+              "inverse-primary": "#006b5f",
+              "surface-dim": "#131312",
+              "on-tertiary-fixed-variant": "#005321",
+              "outline": "#859490",
+              "on-secondary-fixed-variant": "#474744",
+              "outline-variant": "#3c4a46",
+              "secondary-container": "#474744",
+              "primary-fixed-dim": "#3cddc7",
+              "on-secondary": "#31302e",
+              "on-primary-container": "#00574d",
+              "error-container": "#93000a",
+              "secondary-fixed-dim": "#c8c6c3",
+              "on-primary": "#003731",
+              "on-tertiary-fixed": "#002109",
+              "tertiary": "#61f587",
+              "background": "#131312",
+              "on-secondary-container": "#b7b5b2",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#4ae176",
+              "primary-container": "#2dd4bf",
+              "on-surface-variant": "#bacac5",
+              "on-primary-fixed-variant": "#005047",
+              "surface-container-lowest": "#0e0e0d",
+              "surface-container-low": "#1c1c1a",
+              "surface-container-high": "#2a2a29",
+              "surface-container": "#20201e",
+              "primary": "#57f1db",
+              "inverse-surface": "#e5e2df",
+              "surface-tint": "#3cddc7",
+              "surface-variant": "#353533",
+              "tertiary-container": "#3fd86e",
+              "inverse-on-surface": "#31302f",
+              "primary-fixed": "#62fae3",
+              "secondary": "#c8c6c3",
+              "secondary-fixed": "#e5e2df",
+              "surface-container-highest": "#353533",
+              "tertiary-fixed": "#6bff8f",
+              "on-error": "#690005",
+              "on-tertiary-container": "#005925",
+              "on-tertiary": "#003915",
+              "on-secondary-fixed": "#1c1c1a",
+              "on-primary-fixed": "#00201c",
+              "surface-bright": "#3a3938",
+              "on-background": "#e5e2df"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Manrope"],
+              "label": ["Manrope"],
+              "mono": ["JetBrains Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .ease-out-expo { transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+      .glass-card { background: linear-gradient(135deg, rgba(87, 241, 219, 0.08) 0%, rgba(45, 212, 191, 0.02) 100%); }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-x-hidden">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-outline-variant/15 bg-surface-container-lowest flex flex-col py-6 z-50">
+<div class="px-6 mb-10">
+<h1 class="text-2xl font-black tracking-[-0.04em] text-on-surface font-headline">INHUMANS.IO</h1>
+<p class="font-mono text-[10px] tracking-widest text-primary-container uppercase mt-1">Broker Live</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Navigation Items Mapping from JSON -->
+<a class="flex items-center px-6 py-3 space-x-4 text-on-secondary-container hover:bg-surface-container transition-colors duration-200 group font-headline tracking-tighter uppercase font-bold text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span>Terminal</span>
+</a>
+<a class="flex items-center px-6 py-3 space-x-4 text-on-secondary-container hover:bg-surface-container transition-colors duration-200 group font-headline tracking-tighter uppercase font-bold text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Portfolio</span>
+</a>
+<!-- Active State for Explore (Analytics/Discovery Context) -->
+<a class="flex items-center px-6 py-3 space-x-4 text-primary border-r-2 border-primary bg-gradient-to-r from-primary/10 to-transparent font-headline tracking-tighter uppercase font-bold text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center px-6 py-3 space-x-4 text-on-secondary-container hover:bg-surface-container transition-colors duration-200 group font-headline tracking-tighter uppercase font-bold text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center px-6 py-3 space-x-4 text-on-secondary-container hover:bg-surface-container transition-colors duration-200 group font-headline tracking-tighter uppercase font-bold text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-6 space-y-4">
+<button class="w-full py-3 bg-primary-container text-on-primary font-headline font-bold uppercase tracking-tighter rounded-lg scale-98 active:opacity-80 transition-all ease-out-expo">
+                New Trade
+            </button>
+<div class="pt-6 border-t border-outline-variant/10 space-y-2">
+<a class="flex items-center space-x-3 text-on-secondary-container text-xs font-mono uppercase tracking-widest hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help_outline">help_outline</span>
+<span>Support</span>
+</a>
+<a class="flex items-center space-x-3 text-on-secondary-container text-xs font-mono uppercase tracking-widest hover:text-on-surface" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="notifications_active">notifications_active</span>
+<span>Alerts</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 left-64 z-40 h-16 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10 flex justify-between items-center px-8">
+<div class="flex items-center space-x-8">
+<nav class="flex items-center space-x-6">
+<a class="font-mono text-xs uppercase tracking-widest text-on-secondary-container hover:text-primary transition-all" href="#">Markets</a>
+<a class="font-mono text-xs uppercase tracking-widest text-on-secondary-container hover:text-primary transition-all" href="#">Liquidity</a>
+<a class="font-mono text-xs uppercase tracking-widest text-on-secondary-container hover:text-primary transition-all" href="#">Vault</a>
+</nav>
+</div>
+<div class="flex items-center space-x-6">
+<div class="relative group">
+<span class="absolute inset-y-0 left-3 flex items-center text-outline">
+<span class="material-symbols-outlined text-sm" data-icon="search">search</span>
+</span>
+<input class="bg-surface-container-lowest border-none text-[10px] font-mono tracking-widest focus:ring-1 focus:ring-primary/40 rounded-lg w-48 py-2 pl-10 pr-4" placeholder="SEARCH ASSETS..." type="text"/>
+</div>
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-outline hover:text-primary cursor-pointer transition-colors" data-icon="sensors">sensors</span>
+<span class="material-symbols-outlined text-outline hover:text-primary cursor-pointer transition-colors" data-icon="notifications_none">notifications_none</span>
+<button class="px-4 py-1.5 bg-outline-variant/20 text-on-surface text-[10px] font-mono tracking-widest uppercase rounded border border-outline-variant/30 hover:bg-outline-variant/40 transition-all">
+                    Connect Wallet
+                </button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a professional male digital trader with sharp features and neutral lighting in a studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNmn7FLXd8VN0sGH4n-WWDmwRMi478cTWR7wK5tOjXaCIpy5OI1ZZ9qzCbk_IsA-gz7nz6mCFqa830IFVbLuqq88kGG5L8zdFkhGkiXIfSC8kiemW-PymNiSP3LR_3Tg5t8iSuKoTfuLmQ-GuTt_7_4Kp_eKZlx4E4V5s5Z84Je5OnFlivTsZOgAj2SKotDVZd9VXlPKfCijurSmqjXgZMxJLortY7JvxS241wjc3lmv1tF8T7V1njVNHBiJ3xQ91290PFkLcuxjiN"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 px-8 pb-12 min-h-screen">
+<!-- Editorial Header Section -->
+<section class="mb-12 flex items-end justify-between">
+<div class="max-w-2xl">
+<span class="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-4 block">Discovery Protocol</span>
+<h2 class="text-6xl font-black font-headline tracking-tighter text-on-surface leading-tight uppercase">Inhumans Picks</h2>
+<p class="text-on-secondary-container mt-4 text-lg max-w-lg leading-relaxed">
+                    Surgical precision in creator selection. Our proprietary algorithms highlight high-yield risk-adjusted performance.
+                </p>
+</div>
+<div class="flex space-x-2 pb-2">
+<button class="p-3 rounded-full border border-outline-variant/30 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="west">west</span>
+</button>
+<button class="p-3 rounded-full border border-outline-variant/30 bg-surface-container-high hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined" data-icon="east">east</span>
+</button>
+</div>
+</section>
+<!-- Featured High-Impact Carousel -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+<!-- Featured Card 1 -->
+<div class="group relative overflow-hidden rounded-xl border border-primary/20 bg-surface-container-low glass-card p-6 flex flex-col min-h-[400px] transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_40px_rgba(45,212,191,0.1)]">
+<div class="flex justify-between items-start mb-6">
+<div class="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 flex items-center space-x-2">
+<div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
+<span class="text-[10px] font-mono uppercase tracking-widest text-primary font-bold">Recommended for You</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="relative z-10">
+<h3 class="font-headline text-4xl font-extrabold tracking-tighter text-on-surface group-hover:text-primary transition-colors">Vortex Alpha</h3>
+<p class="font-mono text-xs text-on-secondary-container mt-1 uppercase tracking-widest">High-Frequency Quant</p>
+</div>
+<div class="mt-8 space-y-4">
+<div class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
+<span class="font-mono text-[10px] uppercase text-outline">Win Rate</span>
+<span class="font-mono text-xl text-tertiary font-bold">89.4%</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
+<span class="font-mono text-[10px] uppercase text-outline">7D Growth</span>
+<span class="font-mono text-xl text-primary font-bold">+12.4%</span>
+</div>
+<div class="flex justify-between items-center pb-2">
+<span class="font-mono text-[10px] uppercase text-outline">Risk Factor</span>
+<span class="font-mono text-xl text-on-surface font-bold">Low</span>
+</div>
+</div>
+<div class="mt-auto pt-6 flex space-x-3">
+<button class="flex-1 py-3 bg-primary-container text-on-primary font-headline font-bold uppercase tracking-tighter rounded transition-all hover:brightness-110 active:scale-95">Copy Strategy</button>
+<button class="px-4 py-3 bg-surface-bright/20 border border-outline-variant/30 rounded hover:bg-surface-bright/40">
+<span class="material-symbols-outlined text-on-surface" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<!-- Abstract Decorative Glow -->
+<div class="absolute -bottom-10 -right-10 w-48 h-48 bg-primary/10 blur-[80px] rounded-full group-hover:bg-primary/20 transition-all duration-700"></div>
+</div>
+<!-- Featured Card 2 -->
+<div class="group relative overflow-hidden rounded-xl border border-outline-variant/15 bg-surface-container-low p-6 flex flex-col min-h-[400px] transition-all duration-500 hover:border-primary/40 hover:bg-surface-container">
+<div class="flex justify-between items-start mb-6">
+<div class="px-3 py-1 rounded-full bg-tertiary/10 border border-tertiary/20 flex items-center space-x-2">
+<span class="text-[10px] font-mono uppercase tracking-widest text-tertiary font-bold">Trending Velocity</span>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="relative z-10">
+<h3 class="font-headline text-4xl font-extrabold tracking-tighter text-on-surface">Neo Scribe</h3>
+<p class="font-mono text-xs text-on-secondary-container mt-1 uppercase tracking-widest">Momentum Scalper</p>
+</div>
+<div class="mt-8 space-y-4">
+<div class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
+<span class="font-mono text-[10px] uppercase text-outline">Win Rate</span>
+<span class="font-mono text-xl text-tertiary font-bold">76.1%</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
+<span class="font-mono text-[10px] uppercase text-outline">7D Growth</span>
+<span class="font-mono text-xl text-primary font-bold">+28.9%</span>
+</div>
+<div class="flex justify-between items-center pb-2">
+<span class="font-mono text-[10px] uppercase text-outline">Risk Factor</span>
+<span class="font-mono text-xl text-on-surface font-bold">Mid</span>
+</div>
+</div>
+<div class="mt-auto pt-6 flex space-x-3">
+<button class="flex-1 py-3 bg-primary-container text-on-primary font-headline font-bold uppercase tracking-tighter rounded transition-all hover:brightness-110 active:scale-95">Copy Strategy</button>
+<button class="px-4 py-3 bg-surface-bright/20 border border-outline-variant/30 rounded hover:bg-surface-bright/40">
+<span class="material-symbols-outlined text-on-surface" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</div>
+<!-- Featured Card 3 -->
+<div class="group relative overflow-hidden rounded-xl border border-outline-variant/15 bg-surface-container-low p-6 flex flex-col min-h-[400px] transition-all duration-500 hover:border-primary/40 hover:bg-surface-container">
+<div class="flex justify-between items-start mb-6">
+<div class="px-3 py-1 rounded-full bg-on-surface/10 border border-outline-variant/20 flex items-center space-x-2">
+<span class="text-[10px] font-mono uppercase tracking-widest text-on-surface font-bold">Top ROI 30D</span>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="relative z-10">
+<h3 class="font-headline text-4xl font-extrabold tracking-tighter text-on-surface">Iron Gate</h3>
+<p class="font-mono text-xs text-on-secondary-container mt-1 uppercase tracking-widest">Macro Arbitrage</p>
+</div>
+<div class="mt-8 space-y-4">
+<div class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
+<span class="font-mono text-[10px] uppercase text-outline">Win Rate</span>
+<span class="font-mono text-xl text-tertiary font-bold">92.0%</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
+<span class="font-mono text-[10px] uppercase text-outline">7D Growth</span>
+<span class="font-mono text-xl text-primary font-bold">+5.1%</span>
+</div>
+<div class="flex justify-between items-center pb-2">
+<span class="font-mono text-[10px] uppercase text-outline">Risk Factor</span>
+<span class="font-mono text-xl text-on-surface font-bold">Minimal</span>
+</div>
+</div>
+<div class="mt-auto pt-6 flex space-x-3">
+<button class="flex-1 py-3 bg-primary-container text-on-primary font-headline font-bold uppercase tracking-tighter rounded transition-all hover:brightness-110 active:scale-95">Copy Strategy</button>
+<button class="px-4 py-3 bg-surface-bright/20 border border-outline-variant/30 rounded hover:bg-surface-bright/40">
+<span class="material-symbols-outlined text-on-surface" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Main Discovery Grid Section -->
+<section>
+<div class="flex items-center justify-between mb-8 border-b border-outline-variant/10 pb-6">
+<div class="flex items-center space-x-8">
+<button class="font-mono text-xs uppercase tracking-widest text-primary border-b border-primary pb-2 font-bold">All Creators</button>
+<button class="font-mono text-xs uppercase tracking-widest text-on-secondary-container hover:text-on-surface transition-colors pb-2">Top Gains</button>
+<button class="font-mono text-xs uppercase tracking-widest text-on-secondary-container hover:text-on-surface transition-colors pb-2">Most Copied</button>
+<button class="font-mono text-xs uppercase tracking-widest text-on-secondary-container hover:text-on-surface transition-colors pb-2">Low Drawdown</button>
+</div>
+<div class="flex items-center space-x-4">
+<div class="flex items-center space-x-2 px-4 py-2 bg-surface-container-high rounded border border-outline-variant/20 cursor-pointer">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+<span class="font-mono text-[10px] uppercase tracking-widest">Filter: Win Rate</span>
+</div>
+<span class="text-outline text-xs font-mono uppercase tracking-widest">482 CREATORS FOUND</span>
+</div>
+</div>
+<!-- Bento-Style Grid -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Large Stats Card (Bento Item) -->
+<div class="col-span-12 lg:col-span-4 p-8 bg-surface-container-lowest rounded-xl border border-outline-variant/10 flex flex-col justify-between">
+<div>
+<h4 class="font-mono text-xs text-primary uppercase tracking-[0.2em] mb-4">Network Activity</h4>
+<div class="flex items-baseline space-x-4 mb-2">
+<span class="text-6xl font-black font-headline tracking-tighter text-on-surface">2.4M</span>
+<span class="font-mono text-tertiary text-sm font-bold">+18.2%</span>
+</div>
+<p class="text-on-secondary-container text-sm">Total Assets under Social Custody (ASC) in the last 24 hours.</p>
+</div>
+<div class="mt-8 h-24 flex items-end space-x-1">
+<!-- Tiny Data Visualizer -->
+<div class="w-full bg-primary/20 h-[40%] rounded-t-sm"></div>
+<div class="w-full bg-primary/20 h-[60%] rounded-t-sm"></div>
+<div class="w-full bg-primary/40 h-[50%] rounded-t-sm"></div>
+<div class="w-full bg-primary/30 h-[80%] rounded-t-sm"></div>
+<div class="w-full bg-primary h-[90%] rounded-t-sm"></div>
+<div class="w-full bg-primary/40 h-[70%] rounded-t-sm"></div>
+<div class="w-full bg-primary/60 h-[55%] rounded-t-sm"></div>
+</div>
+</div>
+<!-- Regular Grid Items -->
+<div class="col-span-12 lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Grid Item 1 -->
+<div class="p-6 bg-surface-container-low border border-outline-variant/10 rounded-xl hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high overflow-hidden border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="vibrant abstract close-up of a human eye with a digital grid overlay in electric blue and teal tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0fsRIjiN9tc5m8gfLhsGtOWpGmOGVEWDQXV7RrLIAqF8OEpq5LU4qCER7gZNWA102kA_JpYw4UmhYVOVrCA8wU2tskqGer1R6i9v1tQcalfXBBza3SKaWy31I6mqcx5s0XYQoeR5ZeLgu06HqWiQxoYB6pV3hUOlaZnShFYzIx5IQ0NXW3v6wjx_kRZOak84U5-Zuw9ECC6kekj55FpRcPn9IsjP6ELYIN4bWVeADPO7UEv3_IFC5I0jNqpUBu-1ftuyK-Y7SGlsA"/>
+</div>
+<div class="flex-1">
+<h5 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors uppercase tracking-tight">Oracle Mainframe</h5>
+<p class="font-mono text-[10px] text-outline uppercase tracking-widest">Yield Farmer • Level 4</p>
+</div>
+<div class="text-right">
+<div class="font-mono text-tertiary font-bold">+412.0%</div>
+<div class="font-mono text-[9px] text-outline uppercase">ALL-TIME</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/5">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-low bg-on-surface-variant/20"></div>
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-low bg-primary/20"></div>
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-low bg-tertiary/20"></div>
+<div class="pl-3 font-mono text-[9px] text-outline pt-1">+4.2k Copies</div>
+</div>
+<button class="text-[10px] font-mono font-bold text-primary uppercase tracking-widest hover:underline">View Performance</button>
+</div>
+</div>
+<!-- Grid Item 2 -->
+<div class="p-6 bg-surface-container-low border border-outline-variant/10 rounded-xl hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high overflow-hidden border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="macro close-up of motherboard circuitry with flowing neon orange and purple light pulses on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVYOQ8MYDSsUBp-BdWDtEN2nhSGfNJFpGy7wvp4ogPiM6RNEyG8a_xr1W-wiEPINoMe8V8bCJTYdhh2z5nnbYwiodGl_Lw8KOrXT85bF6Zf48uzYJuaHVT8gdads4VDrk9KrJHNAAfZ3cWh1SXAiJZigEhkQZAoNJ95gGnBVnxjH0THptEfWaHLXy9HOoqhFJAASCnAZhZPapne7D7r_p0CO5LTnIrmIBcN3dbjDN-shD07VkNiV13qwTupeUTX6plVM5qnshwKo1D"/>
+</div>
+<div class="flex-1">
+<h5 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors uppercase tracking-tight">Circuit Breaker</h5>
+<p class="font-mono text-[10px] text-outline uppercase tracking-widest">Day Trader • Level 2</p>
+</div>
+<div class="text-right">
+<div class="font-mono text-tertiary font-bold">+184.5%</div>
+<div class="font-mono text-[9px] text-outline uppercase">ALL-TIME</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/5">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-low bg-on-surface-variant/20"></div>
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-low bg-primary/20"></div>
+<div class="pl-3 font-mono text-[9px] text-outline pt-1">+1.1k Copies</div>
+</div>
+<button class="text-[10px] font-mono font-bold text-primary uppercase tracking-widest hover:underline">View Performance</button>
+</div>
+</div>
+<!-- Grid Item 3 -->
+<div class="p-6 bg-surface-container-low border border-outline-variant/10 rounded-xl hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high overflow-hidden border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="geometric sculpture of glass and light refracting soft rainbow colors against a deep charcoal gray wall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG9nbhbwjtelGOaIWefFxi8EcCzZHOIJurh_ETXsXEli_BSY1TkOxE8Am9fsO8t-8XvVt98_CSs0GGcR4H9H6sXvf1clTX5QEV2g9qhbWHQlEOlDW3EIduWvoz-H3RY4oEmzbsYhBVfMg7BLu3E06iYuJ6QseOrM-tyVRVKax5T-i1o9ua0wcgwVcbh5OXsti8NFa3X533CcidFFKDbyU9D39ycjkIidxt95nUhNVRrwsK939GfBrZ1xn9nMw6CYQqFkxcBE68Q-6O"/>
+</div>
+<div class="flex-1">
+<h5 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors uppercase tracking-tight">Glass Architect</h5>
+<p class="font-mono text-[10px] text-outline uppercase tracking-widest">DeFi Strategist • Level 5</p>
+</div>
+<div class="text-right">
+<div class="font-mono text-tertiary font-bold">+52.1%</div>
+<div class="font-mono text-[9px] text-outline uppercase">ALL-TIME</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/5">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-low bg-on-surface-variant/20"></div>
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-low bg-tertiary/20"></div>
+<div class="pl-3 font-mono text-[9px] text-outline pt-1">+8.5k Copies</div>
+</div>
+<button class="text-[10px] font-mono font-bold text-primary uppercase tracking-widest hover:underline">View Performance</button>
+</div>
+</div>
+<!-- Grid Item 4 -->
+<div class="p-6 bg-surface-container-low border border-outline-variant/10 rounded-xl hover:bg-surface-container transition-all cursor-pointer group">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high overflow-hidden border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="minimalist digital artwork of floating spheres in varying shades of black and chrome with subtle reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCj7Y1POGCDqzWtKa0tsnxTLwyWoGIIMC1x88zGe4tt-tcDtMso82PXPSyILwHvkSgDHRK3C9SV5m75h_fNpbF0JqUkgReaLlz96czZH-gelkRkpwZyNOp7Vepg3zZwgzMzlzEC2hXPDwQzasHkcpLDz6EGVmeAkVZDcEWehWFmInAz0VWcVTNXXm-hrgeN38lpOl52hy84PXqyPgTCjAUMPvv4vzLY6QB8LhSH-aEjIWKPDUcm98MJUL1fUpQREWTpjicCJk7tsDb2"/>
+</div>
+<div class="flex-1">
+<h5 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors uppercase tracking-tight">Void Scanner</h5>
+<p class="font-mono text-[10px] text-outline uppercase tracking-widest">Delta Neutral • Level 3</p>
+</div>
+<div class="text-right">
+<div class="font-mono text-tertiary font-bold">+12.4%</div>
+<div class="font-mono text-[9px] text-outline uppercase">ALL-TIME</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/5">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-low bg-on-surface-variant/20"></div>
+<div class="pl-3 font-mono text-[9px] text-outline pt-1">+243 Copies</div>
+</div>
+<button class="text-[10px] font-mono font-bold text-primary uppercase tracking-widest hover:underline">View Performance</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination/Load More Anchor -->
+<div class="mt-16 flex flex-col items-center">
+<button class="px-12 py-4 border border-outline-variant/30 rounded-full font-mono text-xs uppercase tracking-widest hover:bg-surface-container-high transition-all group">
+                    Load More Creator Profiles
+                    <span class="material-symbols-outlined ml-2 text-sm align-middle group-hover:translate-y-1 transition-transform" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Contextual FAB (Suppressed on Explore as per rule, but if needed for 'New Trade' focus it would go here. Submitting with suppression as per focus journey rule.) -->
+</body></html>

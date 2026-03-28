@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inhumans.io | Follower Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Cabinet+Grotesk:wght@800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-container": "#b7b5b2",
+                        "surface-variant": "#353533",
+                        "background": "#131312",
+                        "error": "#ffb4ab",
+                        "on-tertiary-container": "#005925",
+                        "on-error": "#690005",
+                        "inverse-primary": "#006b5f",
+                        "on-surface": "#e5e2df",
+                        "surface-tint": "#3cddc7",
+                        "surface-container-lowest": "#0e0e0d",
+                        "on-secondary-fixed-variant": "#474744",
+                        "on-tertiary-fixed": "#002109",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "secondary-fixed": "#e5e2df",
+                        "primary-container": "#2dd4bf",
+                        "outline": "#859490",
+                        "on-secondary": "#31302e",
+                        "outline-variant": "#3c4a46",
+                        "on-primary-fixed": "#00201c",
+                        "inverse-surface": "#e5e2df",
+                        "tertiary": "#61f587",
+                        "on-primary-fixed-variant": "#005047",
+                        "on-secondary-fixed": "#1c1c1a",
+                        "on-primary-container": "#00574d",
+                        "secondary": "#c8c6c3",
+                        "on-background": "#e5e2df",
+                        "surface-container-low": "#1c1c1a",
+                        "surface-container": "#20201e",
+                        "surface-bright": "#3a3938",
+                        "primary-fixed-dim": "#3cddc7",
+                        "tertiary-fixed": "#6bff8f",
+                        "secondary-container": "#474744",
+                        "error-container": "#93000a",
+                        "primary": "#57f1db",
+                        "on-surface-variant": "#bacac5",
+                        "surface-dim": "#131312",
+                        "secondary-fixed-dim": "#c8c6c3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#353533",
+                        "on-primary": "#003731",
+                        "inverse-on-surface": "#31302f",
+                        "surface-container-high": "#2a2a29",
+                        "surface": "#131312",
+                        "on-tertiary": "#003915",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "primary-fixed": "#62fae3",
+                        "tertiary-container": "#3fd86e"
+                    },
+                    fontFamily: {
+                        "headline": ["Cabinet Grotesk", "Space Grotesk"],
+                        "body": ["Satoshi", "Manrope"],
+                        "label": ["Manrope"],
+                        "mono": ["JetBrains Mono"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ease-out-expo { transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Execution from JSON) -->
+<aside class="bg-[#131312] h-screen w-64 fixed left-0 top-0 hidden lg:flex flex-col border-r border-[#1c1c1a] z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-xl" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h1 class="font-['Cabinet_Grotesk'] text-[#e5e2df] font-bold text-lg leading-none">The Vault</h1>
+<p class="text-[10px] text-primary uppercase tracking-widest mt-1">Verified Precision</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 py-3 text-[#3a3938] pl-5 hover:bg-[#1c1c1a] hover:text-[#e5e2df] linear duration-150" href="#">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+<span class="font-['Satoshi'] text-sm antialiased">Home</span>
+</a>
+<a class="flex items-center gap-3 py-3 text-[#2dd4bf] font-bold border-l-4 border-[#2dd4bf] pl-4 linear duration-150" href="#">
+<span class="material-symbols-outlined text-xl">insert_chart</span>
+<span class="font-['Satoshi'] text-sm antialiased">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 py-3 text-[#3a3938] pl-5 hover:bg-[#1c1c1a] hover:text-[#e5e2df] linear duration-150" href="#">
+<span class="material-symbols-outlined text-xl">lock</span>
+<span class="font-['Satoshi'] text-sm antialiased">Vaults</span>
+</a>
+<a class="flex items-center gap-3 py-3 text-[#3a3938] pl-5 hover:bg-[#1c1c1a] hover:text-[#e5e2df] linear duration-150" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="font-['Satoshi'] text-sm antialiased">Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 space-y-4">
+<button class="w-full py-3 px-4 bg-primary-container text-on-primary rounded-lg font-bold text-sm ease-out-expo active:scale-95 transition-all">
+                Upgrade Tier
+            </button>
+<div class="pt-4 border-t border-[#1c1c1a] space-y-1">
+<a class="flex items-center gap-3 py-2 text-[#3a3938] pl-5 hover:text-[#e5e2df] transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">help_outline</span>
+<span class="text-xs">Support</span>
+</a>
+<a class="flex items-center gap-3 py-2 text-[#3a3938] pl-5 hover:text-[#e5e2df] transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span class="text-xs">Docs</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 min-h-screen pb-24 lg:pb-12">
+<!-- TopAppBar (Execution from JSON) -->
+<header class="bg-[#131312]/80 backdrop-blur-xl sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-[-0.04em] text-[#e5e2df] font-['Cabinet_Grotesk']">INHUMANS.IO</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-[#a3a3a3] hover:text-[#e5e2df] transition-colors text-sm font-medium" href="#">Feed</a>
+<a class="text-[#2dd4bf] border-b-2 border-[#2dd4bf] pb-1 text-sm font-medium" href="#">Portfolio</a>
+<a class="text-[#a3a3a3] hover:text-[#e5e2df] transition-colors text-sm font-medium" href="#">Explore</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-[#1c1c1a] rounded-full text-[#a3a3a3]">
+<span class="material-symbols-outlined text-lg">notifications</span>
+<span class="material-symbols-outlined text-lg">account_balance_wallet</span>
+<div class="h-4 w-px bg-[#3a3938] mx-1"></div>
+<span class="text-xs font-mono font-bold text-[#2dd4bf]">Connected</span>
+</div>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant/30" data-alt="professional headshot of a person with minimalist aesthetic and subtle rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyGZwrczRE2sJNpFt-8fN7sHa_RRaFcEP94Zo859Xz6hfkK3BC57z74smsTvMYGvdnCL_onik_yAiWFFZ2fUDF2EOwNxj7yWS-9bW0kKO4r1IxFA69uVGbVx5ZoOnoe4ePMzenyg9KnYPvflu7mZlPHjbl8qIR0GEoXnL35n-gV4VFHGvcHcycuZGtaxNIMg3ejMJNK9W2VgRplVJgwOSs4nJccu0xD86KqdAZ0G8XHn_fcFA1NgQafQJRfPX63wRFfpdvsRUxjrDP"/>
+</div>
+</div>
+</header>
+<div class="max-w-[1440px] mx-auto px-6 pt-8">
+<!-- Top Section: Portfolio Summary Card -->
+<section class="mb-12">
+<div class="bg-surface-container border-none rounded-xl p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none">
+<div class="w-full h-full bg-gradient-to-l from-primary/20 to-transparent"></div>
+</div>
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 relative z-10">
+<div>
+<span class="text-[10px] font-mono uppercase tracking-[0.2em] text-outline mb-2 block">Personal copy-trading dashboard</span>
+<h2 class="text-4xl lg:text-5xl font-['Cabinet_Grotesk'] font-extrabold tracking-tight text-on-surface mb-6">My Copy Trading Portfolio</h2>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-16">
+<div>
+<p class="text-xs text-outline mb-1 font-medium">Total Invested</p>
+<p class="font-mono text-2xl font-bold">₹1,24,000</p>
+</div>
+<div>
+<p class="text-xs text-outline mb-1 font-medium">Current Value</p>
+<p class="font-mono text-2xl font-bold text-primary">₹1,38,400</p>
+</div>
+<div>
+<p class="text-xs text-outline mb-1 font-medium">Net P&amp;L</p>
+<div class="flex items-center gap-2">
+<p class="font-mono text-2xl font-bold text-tertiary">+₹14,400</p>
+<span class="bg-tertiary/10 text-tertiary px-2 py-0.5 rounded text-[10px] font-bold font-mono">+11.6%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sparkline Visualization -->
+<div class="w-full lg:w-64 h-24 flex items-end gap-1">
+<div class="flex-1 bg-tertiary/20 rounded-t h-[40%]"></div>
+<div class="flex-1 bg-tertiary/20 rounded-t h-[35%]"></div>
+<div class="flex-1 bg-tertiary/20 rounded-t h-[55%]"></div>
+<div class="flex-1 bg-tertiary/20 rounded-t h-[50%]"></div>
+<div class="flex-1 bg-tertiary/20 rounded-t h-[75%]"></div>
+<div class="flex-1 bg-tertiary/20 rounded-t h-[65%]"></div>
+<div class="flex-1 bg-tertiary/30 rounded-t h-[85%]"></div>
+<div class="flex-1 bg-tertiary/40 rounded-t h-[95%]"></div>
+<div class="flex-1 bg-primary-container rounded-t h-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Middle Section: By Creator Breakdown -->
+<section class="mb-12">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">groups</span>
+                        By Creator Breakdown
+                    </h3>
+<button class="text-xs font-mono text-outline hover:text-primary transition-colors flex items-center gap-1">
+                        VIEW ALL <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Creator Card 1 -->
+<div class="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10 hover:border-primary/20 transition-all ease-out-expo group">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg" data-alt="vibrant 3D avatar of a digital artist with futuristic glasses and neon highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoJdKnaYndU0hObAQL2HKjoZAv1gR1_rOdrh9RN8eTYfwXgGLNmRk-0Pve0_gUv6NZcMFtsho1mBGKcGZDdFRsdekk5l4Ljwd1xMSr6mfdk_2vSSPVAAaQN2Br12PnRwJoflWz-TUqifrlmoNyPAHnQPHeKD9Tnm6ExSo9Vxy7l5BjcyfjrQzTG7JSgcvssLbjUNnn_awiLfZf3FsnwK21CZ2GAGQL9RqDDBA_G0gz8djlLf-qPVPu49MWRjAMvZd8-G4SB9xU4pZK"/>
+<div>
+<h4 class="font-bold text-sm">QuantVortex</h4>
+<p class="text-[10px] text-outline uppercase font-mono tracking-wider">Hedge Specialist</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono text-sm font-bold text-tertiary">+18.4%</p>
+<p class="text-[10px] text-outline font-medium">All Time</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant/10">
+<div>
+<p class="text-[10px] text-outline mb-1">Allocation</p>
+<p class="font-mono text-sm font-bold">₹45,000</p>
+</div>
+<div>
+<p class="text-[10px] text-outline mb-1">Active Trades</p>
+<p class="font-mono text-sm font-bold">04</p>
+</div>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-surface-container-highest py-2 rounded text-[10px] font-bold uppercase tracking-wider group-hover:bg-primary group-hover:text-on-primary transition-colors">Details</button>
+<button class="px-3 bg-surface-container-highest py-2 rounded text-outline group-hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm">do_not_disturb_on</span>
+</button>
+</div>
+</div>
+<!-- Creator Card 2 -->
+<div class="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10 hover:border-primary/20 transition-all ease-out-expo group">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg" data-alt="minimalist 3D character avatar of a strategic trader with clean white background and sharp lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8iJlPk5IBUdD-xIGImIaDiCSFngkdBSRiqgRLxzl6HsXxXH5RPWUBcHA8ai_CmODCr6Zuy_GV6E1JFIDG4dIGf6Q-9aDy5cLaRRw0jrrBZDSzp1Pn_CThjMI1Xfy1FVc5HnUua2riIRRw6evBLEygLuKnPqZHUDPNtDpNV_QrDgNANBkothwC4Yvve1Q3TcEVml6YH414uSdKHdhd9KMRx9Gb1Q1D7Bc33QaEk5mv7jM8iO14BtVpZOt8Ud9l5N8FY-L0WSFpS58L"/>
+<div>
+<h4 class="font-bold text-sm">MacroAlpha</h4>
+<p class="text-[10px] text-outline uppercase font-mono tracking-wider">Global Indices</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono text-sm font-bold text-tertiary">+6.2%</p>
+<p class="text-[10px] text-outline font-medium">All Time</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant/10">
+<div>
+<p class="text-[10px] text-outline mb-1">Allocation</p>
+<p class="font-mono text-sm font-bold">₹60,000</p>
+</div>
+<div>
+<p class="text-[10px] text-outline mb-1">Active Trades</p>
+<p class="font-mono text-sm font-bold">12</p>
+</div>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-surface-container-highest py-2 rounded text-[10px] font-bold uppercase tracking-wider group-hover:bg-primary group-hover:text-on-primary transition-colors">Details</button>
+<button class="px-3 bg-surface-container-highest py-2 rounded text-outline group-hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm">do_not_disturb_on</span>
+</button>
+</div>
+</div>
+<!-- Creator Card 3 -->
+<div class="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10 hover:border-primary/20 transition-all ease-out-expo group">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-lg" data-alt="high-tech 3D avatar profile with dark visor and cyan neon accents representing a tech-focused trader" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3GxA_g68B-rwwSY5etUUYryKv7YL_NnNWP9QYY0g-vYmXMcpNaMdqWEngNgQStRLI1lfZvIZ6-yHcwbWrlLZcpgoafsOKUAPLYOaVE7HX4caun2DBYsMC_DLw173sJZHs23q7m6Jst0hgPluUPZS-L6EMy_RmAw9p-FDgHaW_DI-N0IOgTDDNeVnhmLlckyYuaXIaY7_cAezPTEOiq9NqIxQ89GUmmXBtMk2QiFRTbaXRqR_86hkjRkVtLRo9BOFP6leOFCYyQYLx"/>
+<div>
+<h4 class="font-bold text-sm">ShadowPulse</h4>
+<p class="text-[10px] text-outline uppercase font-mono tracking-wider">Scalper Pro</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono text-sm font-bold text-error">-2.1%</p>
+<p class="text-[10px] text-outline font-medium">All Time</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant/10">
+<div>
+<p class="text-[10px] text-outline mb-1">Allocation</p>
+<p class="font-mono text-sm font-bold">₹19,000</p>
+</div>
+<div>
+<p class="text-[10px] text-outline mb-1">Active Trades</p>
+<p class="font-mono text-sm font-bold">02</p>
+</div>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-surface-container-highest py-2 rounded text-[10px] font-bold uppercase tracking-wider group-hover:bg-primary group-hover:text-on-primary transition-colors">Details</button>
+<button class="px-3 bg-surface-container-highest py-2 rounded text-outline group-hover:text-error transition-colors">
+<span class="material-symbols-outlined text-sm">do_not_disturb_on</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Section: Trade Log Table -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-xl font-bold">Trade Log</h3>
+<div class="flex items-center gap-2">
+<button class="p-2 bg-surface-container-low rounded-lg text-outline hover:text-on-surface">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+</button>
+<button class="p-2 bg-surface-container-low rounded-lg text-outline hover:text-on-surface">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl overflow-x-auto no-scrollbar border border-outline-variant/5">
+<table class="w-full border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/10">
+<th class="text-left px-6 py-4 text-[10px] uppercase font-mono text-outline tracking-wider">Date</th>
+<th class="text-left px-6 py-4 text-[10px] uppercase font-mono text-outline tracking-wider">Instrument</th>
+<th class="text-left px-6 py-4 text-[10px] uppercase font-mono text-outline tracking-wider">Creator</th>
+<th class="text-right px-6 py-4 text-[10px] uppercase font-mono text-outline tracking-wider">Buy Price</th>
+<th class="text-right px-6 py-4 text-[10px] uppercase font-mono text-outline tracking-wider">Exit/Current</th>
+<th class="text-right px-6 py-4 text-[10px] uppercase font-mono text-outline tracking-wider">P&amp;L</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container/30 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-on-secondary-container">2023-11-24 14:12</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-bold text-sm">NIFTY24DEC19500CE</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">QuantVortex</td>
+<td class="px-6 py-4 text-right font-mono text-sm">₹245.50</td>
+<td class="px-6 py-4 text-right font-mono text-sm">₹298.20</td>
+<td class="px-6 py-4 text-right">
+<span class="font-mono text-sm font-bold text-tertiary">+₹5,270</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container/30 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-on-secondary-container">2023-11-24 10:05</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-bold text-sm">RELIANCE</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">MacroAlpha</td>
+<td class="px-6 py-4 text-right font-mono text-sm">₹2,342.00</td>
+<td class="px-6 py-4 text-right font-mono text-sm">₹2,388.15</td>
+<td class="px-6 py-4 text-right">
+<span class="font-mono text-sm font-bold text-tertiary">+₹4,615</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container/30 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-on-secondary-container">2023-11-23 15:45</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-bold text-sm">BANKNIFTY-P</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">ShadowPulse</td>
+<td class="px-6 py-4 text-right font-mono text-sm">₹122.00</td>
+<td class="px-6 py-4 text-right font-mono text-sm">₹104.50</td>
+<td class="px-6 py-4 text-right">
+<span class="font-mono text-sm font-bold text-error">-₹1,750</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Execution from JSON) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#131312]/90 backdrop-blur-lg border-t border-[#3c4a46]/15 shadow-[0_-8px_24px_rgba(0,0,0,0.5)] lg:hidden z-50">
+<a class="flex flex-col items-center justify-center text-[#3a3938] transition-transform ease-out-expo active:bg-[#20201e]" href="#">
+<span class="material-symbols-outlined">dynamic_feed</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider mt-1">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#2dd4bf] bg-[#2dd4bf]/10 rounded-xl px-3 py-1 transition-transform ease-out-expo active:bg-[#20201e]" href="#">
+<span class="material-symbols-outlined">insert_chart</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider mt-1">Portfolio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3a3938] transition-transform ease-out-expo active:bg-[#20201e]" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider mt-1">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#3a3938] transition-transform ease-out-expo active:bg-[#20201e]" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase tracking-wider mt-1">Profile</span>
+</a>
+</nav>
+</body></html>
