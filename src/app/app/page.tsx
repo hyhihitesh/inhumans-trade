@@ -62,88 +62,90 @@ async function CreatorDashboard({ profile, supabase }: { profile: UserProfile; s
       </div>
 
       <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
-        <article className="overflow-hidden rounded-inhumans-lg border border-inhumans-border bg-white shadow-inhumans lg:col-span-2">
-          <div className="flex items-center justify-between border-b border-inhumans-divider bg-surface-2/50 px-6 py-4">
-            <h3 className="text-[11px] font-bold uppercase tracking-wider text-text-muted">Most Recent Verified Trade</h3>
-            <Link
-              href="/app/feed"
-              className="group flex items-center gap-1.5 text-[11px] font-bold uppercase text-teal-primary transition-colors hover:text-teal-primary-hover"
-            >
-              Full Feed <ChevronRight size={14} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
-          </div>
-          <div className="p-8">
-            {latestTrade ? (
-              <div className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
-                <div>
-                  <div className="mb-3 flex items-center gap-3">
-                    <span
-                      className={cn(
-                        "rounded-full border px-2 py-0.5 text-[10px] font-bold",
-                        latestTrade.side === "BUY" ? "border-profit/20 bg-profit/10 text-profit" : "border-loss/20 bg-loss/10 text-loss"
-                      )}
-                    >
-                      {latestTrade.side}
-                    </span>
-                    <h4 className="text-2xl font-bold tracking-tight">{latestTrade.instrument}</h4>
+        <div className="lg:col-span-2 space-y-8">
+          <article className="overflow-hidden rounded-inhumans-lg border border-inhumans-border bg-white shadow-inhumans">
+            <div className="flex items-center justify-between border-b border-inhumans-divider bg-surface-2/50 px-6 py-4">
+              <h3 className="text-[11px] font-bold uppercase tracking-wider text-text-muted">Most Recent Verified Trade</h3>
+              <Link
+                href="/app/feed"
+                className="group flex items-center gap-1.5 text-[11px] font-bold uppercase text-teal-primary transition-colors hover:text-teal-primary-hover"
+              >
+                Full Feed <ChevronRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
+            <div className="p-8">
+              {latestTrade ? (
+                <div className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
+                  <div>
+                    <div className="mb-3 flex items-center gap-3">
+                      <span
+                        className={cn(
+                          "rounded-full border px-2 py-0.5 text-[10px] font-bold",
+                          latestTrade.side === "BUY" ? "border-profit/20 bg-profit/10 text-profit" : "border-loss/20 bg-loss/10 text-loss"
+                        )}
+                      >
+                        {latestTrade.side}
+                      </span>
+                      <h4 className="text-2xl font-bold tracking-tight">{latestTrade.instrument}</h4>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="flex flex-col">
+                        <span className="text-[9px] font-bold uppercase tracking-widest text-text-faint">Entry</span>
+                        <span className="font-mono text-sm font-bold">{latestTrade.entryPrice.toFixed(2)}</span>
+                      </div>
+                      <div className="h-6 w-px bg-inhumans-divider" />
+                      <div className="flex flex-col">
+                        <span className="text-[9px] font-bold uppercase tracking-widest text-text-faint">Status</span>
+                        <span className="text-sm font-bold capitalize text-text-muted">{latestTrade.status}</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="flex flex-col">
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-text-faint">Entry</span>
-                      <span className="font-mono text-sm font-bold">{latestTrade.entryPrice.toFixed(2)}</span>
-                    </div>
-                    <div className="h-6 w-px bg-inhumans-divider" />
-                    <div className="flex flex-col">
-                      <span className="text-[9px] font-bold uppercase tracking-widest text-text-faint">Status</span>
-                      <span className="text-sm font-bold capitalize text-text-muted">{latestTrade.status}</span>
-                    </div>
+                  <div className="border-inhumans-divider pt-6 text-left md:border-t-0 md:pt-0 md:text-right">
+                    <p className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-text-faint">Live Performance</p>
+                    <PnLNumber value={latestTrade.currentPnl} className="text-4xl" />
                   </div>
                 </div>
-                <div className="border-inhumans-divider pt-6 text-left md:border-t-0 md:pt-0 md:text-right">
-                  <p className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-text-faint">Live Performance</p>
-                  <PnLNumber value={latestTrade.currentPnl} className="text-4xl" />
+              ) : (
+                <div className="rounded-inhumans-md border border-dashed border-inhumans-border bg-surface-2/30 py-8 text-center">
+                  <p className="text-sm italic text-text-muted">Awaiting your first broker-verified execution.</p>
+                  <Link
+                    href="/app/feed"
+                    className="mt-5 inline-block rounded-inhumans-md bg-teal-primary px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white shadow-sm transition-all hover:bg-teal-primary-hover"
+                  >
+                    Initialize Feed
+                  </Link>
                 </div>
-              </div>
-            ) : (
-              <div className="rounded-inhumans-md border border-dashed border-inhumans-border bg-surface-2/30 py-8 text-center">
-                <p className="text-sm italic text-text-muted">Awaiting your first broker-verified execution.</p>
-                <Link
-                  href="/app/feed"
-                  className="mt-5 inline-block rounded-inhumans-md bg-teal-primary px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white shadow-sm transition-all hover:bg-teal-primary-hover"
-                >
-                  Initialize Feed
-                </Link>
-              </div>
-            )}
-          </div>
-        </article>
+              )}
+            </div>
+          </article>
 
-        <article className="flex flex-col justify-between rounded-inhumans-lg border border-inhumans-border bg-white p-8 shadow-inhumans">
-          <div>
-            <h3 className="mb-8 text-[11px] font-bold uppercase tracking-wider text-text-muted">Performance Cycle</h3>
-            <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-text-faint">30D Realized P&amp;L</p>
-            <PnLNumber value={summary.monthlyPnl} className="text-4xl" />
+          <article className="flex flex-col justify-between rounded-inhumans-lg border border-inhumans-border bg-white p-8 shadow-inhumans">
+            <div>
+              <h3 className="mb-8 text-[11px] font-bold uppercase tracking-wider text-text-muted">Performance Cycle</h3>
+              <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-text-faint">30D Realized P&amp;L</p>
+              <PnLNumber value={summary.monthlyPnl} className="text-4xl" />
 
-            <div className="mt-8 space-y-4">
-              <div className="flex items-center justify-between border-b border-inhumans-divider py-2">
-                <span className="text-xs font-medium text-text-muted">Total Trades</span>
-                <span className="font-mono text-xs font-bold">{summary.totalTrades}</span>
-              </div>
-              <div className="flex items-center justify-between border-b border-inhumans-divider py-2">
-                <span className="text-xs font-medium text-text-muted">Executed Copies</span>
-                <span className="font-mono text-xs font-bold">{summary.executedCopyTrades}</span>
+              <div className="mt-8 space-y-4">
+                <div className="flex items-center justify-between border-b border-inhumans-divider py-2">
+                  <span className="text-xs font-medium text-text-muted">Total Trades</span>
+                  <span className="font-mono text-xs font-bold">{summary.totalTrades}</span>
+                </div>
+                <div className="flex items-center justify-between border-b border-inhumans-divider py-2">
+                  <span className="text-xs font-medium text-text-muted">Executed Copies</span>
+                  <span className="font-mono text-xs font-bold">{summary.executedCopyTrades}</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="mt-10">
-            <Link
-              href="/app/analytics"
-              className="flex w-full items-center justify-center gap-2 rounded-inhumans-md border border-inhumans-border bg-surface-2 py-3.5 text-[11px] font-bold uppercase tracking-widest text-foreground transition-all hover:bg-surface-3"
-            >
-              Deep Analytics <ArrowUpRight size={14} />
-            </Link>
-          </div>
-        </article>
+            <div className="mt-10">
+              <Link
+                href="/app/analytics"
+                className="flex w-full items-center justify-center gap-2 rounded-inhumans-md border border-inhumans-border bg-surface-2 py-3.5 text-[11px] font-bold uppercase tracking-widest text-foreground transition-all hover:bg-surface-3"
+              >
+                Deep Analytics <ArrowUpRight size={14} />
+              </Link>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   );
@@ -232,7 +234,11 @@ async function FollowerDashboard({ profile, supabase }: { profile: UserProfile; 
                         </span>
                       </td>
                       <td className="px-8 py-5 text-right font-semibold">
-                        {copy.realizedPnl !== null ? <PnLNumber value={copy.realizedPnl} className="text-sm" /> : <span className="text-xs text-text-faint">--</span>}
+                        {copy.realizedPnl !== null ? (
+                          <PnLNumber value={copy.realizedPnl} className="text-sm" />
+                        ) : (
+                          <span className="text-xs text-text-faint">--</span>
+                        )}
                       </td>
                     </tr>
                   ))}

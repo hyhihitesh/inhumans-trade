@@ -2,7 +2,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { SupabaseCreatorPlatformRepository } from "@/domain/datasources/supabase-creator-platform";
 import { requireUserProfile } from "@/lib/auth/session";
-import { cancelSubscriptionAction } from "@/app/(protected)/app/subscriptions/actions";
+import { cancelSubscriptionAction } from "@/app/app/subscriptions/actions";
 import { RazorpaySubscribeButton } from "@/components/subscriptions/RazorpaySubscribeButton";
 
 export default async function SubscriptionsPage({

@@ -1,5 +1,5 @@
 import { ShieldAlert } from "lucide-react";
-import { actionModerationReportAction } from "@/app/(protected)/app/admin/moderation/actions";
+import { actionModerationReportAction } from "@/app/app/admin/moderation/actions";
 import { SupabaseModerationRepository } from "@/domain/datasources/supabase-moderation";
 import { requireAdminUser } from "@/lib/auth/admin";
 import { createClient } from "@/lib/supabase/server";

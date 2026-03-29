@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { disconnectZerodhaBrokerAction } from "@/app/(protected)/app/actions";
+import { disconnectZerodhaBrokerAction } from "@/app/app/actions";
 import { SupabaseOnboardingRepository } from "@/domain/datasources/supabase-onboarding";
 import { BrokerName } from "@/domain/types";
 import { requireAuthenticatedSession } from "@/lib/auth/session";

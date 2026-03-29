@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { SupabaseCreatorPlatformRepository } from "@/domain/datasources/supabase-creator-platform";
+import { razorpay, toPaise } from "@/lib/billing/razorpay";
 
 type Body = { creatorId: string; tierId: string };
 
@@ -24,7 +25,7 @@ export async function POST(request: Request) {
 
   const { data: followerProfile, error: followerError } = await supabase
     .from("profiles")
-    .select("id, name")
+    .select("id, name, handle")
     .eq("id", user.id)
     .single();
   if (followerError) return NextResponse.json({ error: followerError.message }, { status: 400 });
@@ -35,6 +36,31 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid or inactive tier" }, { status: 400 });
   }
 
+  // 1. Ensure a Razorpay Plan exists for this tier
+  // In a real-world scenario, we'd cache this in our DB. 
+  // For now, we fetch/create a plan dynamically.
+  let planId = (tier as any).razorpay_plan_id;
+
+  if (!planId) {
+    try {
+      const plan = await razorpay.plans.create({
+        period: "monthly",
+        interval: 1,
+        item: {
+          name: `Inhumans: @${tier.creatorId.slice(0, 8)} - ${tier.label}`,
+          amount: toPaise(tier.monthlyPriceInr),
+          currency: "INR",
+          description: `Subscription to verified trade stream of ${tier.creatorId}`
+        }
+      });
+      planId = plan.id;
+      // Note: Ideally, we update our DB here to store the planId for future use.
+    } catch (error: any) {
+      return NextResponse.json({ error: "Failed to create payment plan", details: error.message }, { status: 502 });
+    }
+  }
+
+  // 2. Create Inhumans Pending Subscription
   const subscription = await repo.createPendingSubscription(body.creatorId, user.id, body.tierId);
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -53,56 +79,35 @@ export async function POST(request: Request) {
     });
   }
 
-  const keyId = process.env.RAZORPAY_KEY_ID;
-  const keySecret = process.env.RAZORPAY_KEY_SECRET;
-  if (!keyId || !keySecret) {
-    return NextResponse.json(
-      {
-        error: "Paid checkout is unavailable. Razorpay is not configured on this environment.",
-      },
-      { status: 503 }
-    );
-  }
-
-  const orderResp = await fetch("https://api.razorpay.com/v1/orders", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Basic ${Buffer.from(`${keyId}:${keySecret}`).toString("base64")}`,
-    },
-    body: JSON.stringify({
-      amount: tier.monthlyPriceInr * 100,
-      currency: "INR",
-      receipt: `sub_${subscription.id.slice(0, 16)}`,
+  // 3. Create Razorpay Subscription
+  try {
+    const rzpSubscription = await razorpay.subscriptions.create({
+      plan_id: planId,
+      total_count: 120, // 10 years of monthly billing
+      quantity: 1,
+      customer_notify: 1,
       notes: {
-        subscription_id: subscription.id,
+        inhumans_subscription_id: subscription.id,
         creator_id: body.creatorId,
         follower_id: user.id,
         tier_id: body.tierId,
-      },
-    }),
-  });
+      }
+    });
 
-  if (!orderResp.ok) {
-    const details = await orderResp.text();
-    return NextResponse.json({ error: "Failed to create Razorpay order", details }, { status: 502 });
+    return NextResponse.json({
+      mode: "razorpay_subscription",
+      keyId: process.env.RAZORPAY_KEY_ID,
+      razorpaySubscriptionId: rzpSubscription.id,
+      subscriptionId: subscription.id,
+      creatorId: body.creatorId,
+      tierId: body.tierId,
+      profileName: followerProfile.name ?? "Follower",
+      profileEmail: user.email ?? "",
+      successUrl,
+      cancelUrl,
+    });
+  } catch (error: any) {
+    return NextResponse.json({ error: "Failed to create Razorpay subscription", details: error.message }, { status: 502 });
   }
-
-  const order = (await orderResp.json()) as { id: string };
-
-  return NextResponse.json({
-    mode: "razorpay",
-    keyId,
-    orderId: order.id,
-    amount: tier.monthlyPriceInr * 100,
-    currency: "INR",
-    subscriptionId: subscription.id,
-    creatorId: body.creatorId,
-    tierId: body.tierId,
-    profileName: followerProfile.name ?? "Follower",
-    profileEmail: user.email ?? "",
-    successUrl,
-    cancelUrl,
-  });
 }
 

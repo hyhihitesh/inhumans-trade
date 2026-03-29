@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { SupabaseCreatorPlatformRepository } from "@/domain/datasources/supabase-creator-platform";
 import { requireUserProfile } from "@/lib/auth/session";
-import { markNotificationReadAction } from "@/app/(protected)/app/notifications/actions";
+import { markNotificationReadAction } from "@/app/app/notifications/actions";
 
 function timeAgo(iso: string) {
   const diff = Date.now() - new Date(iso).getTime();

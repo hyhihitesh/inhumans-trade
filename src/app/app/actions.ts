@@ -9,6 +9,7 @@ import { requireAuthenticatedSession } from "@/lib/auth/session";
 import { invalidateZerodhaAccessToken } from "@/lib/brokers/zerodha-oauth";
 import { decryptBrokerToken } from "@/lib/brokers/token-crypto";
 import { requireZerodhaSessionEnv } from "@/lib/supabase/env";
+import { captureServerEvent } from "@/lib/posthog";
 
 function parseRole(value: string | null): Role | null {
   if (value === "creator" || value === "follower") return value;
@@ -87,7 +88,20 @@ export async function saveOnboardingAction(formData: FormData) {
   revalidatePath("/app/onboarding");
   revalidatePath("/app");
 
-  if (completed) redirect("/app/settings/broker");
+  if (completed) {
+    await captureServerEvent(user.id, "onboarding_completed", {
+      role: payload.role,
+      experience: payload.experienceLevel,
+      riskBand: payload.riskBand,
+    });
+    redirect("/app/settings/broker");
+  }
+
+  await captureServerEvent(user.id, "onboarding_step_saved", {
+    step: nextStep,
+    intent,
+  });
+
   redirect(`/app/onboarding?step=${nextStep}`);
 }
 export async function disconnectZerodhaBrokerAction() {

@@ -1,7 +1,7 @@
 import { SupabaseCopyTradeRepository } from "@/domain/datasources/supabase-copy-trade";
 import { createClient } from "@/lib/supabase/server";
 import { requireUserProfile } from "@/lib/auth/session";
-import { updateAlertPreferencesAction } from "@/app/(protected)/app/settings/alerts/actions";
+import { updateAlertPreferencesAction } from "@/app/app/settings/alerts/actions";
 import { WebPushSettingsCard } from "@/components/push/WebPushSettingsCard";
 import { getWebPushPublicKey } from "@/lib/push/web-push";
 

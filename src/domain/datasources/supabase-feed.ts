@@ -6,6 +6,7 @@ import {
   normalizeTradeStatus,
 } from "@/domain/repositories/feed-repository";
 import { FeedItem, Role, Trade, TradeSide } from "@/domain/types";
+import { withRetry } from "@/lib/api-utils";
 
 interface FeedItemRow {
   id: string;
@@ -80,13 +81,15 @@ export class SupabaseFeedRepository implements FeedRepository {
   constructor(private readonly supabase: SupabaseClient) {}
 
   async listFeedItems(limit = 30, viewerId?: string): Promise<FeedItem[]> {
-    const { data: feedRows, error: feedError } = viewerId
-      ? await this.supabase.rpc("list_feed_items_for_viewer", { p_limit: limit })
-      : await this.supabase
-          .from("feed_items")
-          .select("id, type, creator_id, trade_id, content, cta_label, published_at, metadata")
-          .order("published_at", { ascending: false })
-          .limit(limit);
+    const { data: feedRows, error: feedError } = await withRetry(async () => 
+      viewerId
+        ? await this.supabase.rpc("list_feed_items_for_viewer", { p_limit: limit })
+        : await this.supabase
+            .from("feed_items")
+            .select("id, type, creator_id, trade_id, content, cta_label, published_at, metadata")
+            .order("published_at", { ascending: false })
+            .limit(limit)
+    );
 
     if (feedError) throw new FeedRepositoryError(feedError.message);
     if (!feedRows || feedRows.length === 0) return [];
@@ -102,7 +105,7 @@ export class SupabaseFeedRepository implements FeedRepository {
       { data: tradeRows, error: tradeError },
       { data: copyCounts, error: copyCountError }
     ] =
-      await Promise.all([
+      await withRetry(async () => await Promise.all([
         this.supabase.from("profiles").select("id, handle, name, role").in("id", creatorIds),
         tradeIds.length === 0
           ? Promise.resolve({ data: [] as TradeRow[], error: null })
@@ -118,7 +121,7 @@ export class SupabaseFeedRepository implements FeedRepository {
               .from("copy_trades")
               .select("trade_id")
               .in("trade_id", tradeIds)
-      ]);
+      ]));
 
     if (profileError) throw new FeedRepositoryError(profileError.message);
     if (tradeError) throw new FeedRepositoryError(tradeError.message);
@@ -161,23 +164,27 @@ export class SupabaseFeedRepository implements FeedRepository {
   }
 
   async listCreatorTrades(creatorId: string, limit = 20): Promise<Trade[]> {
-    const { data, error } = await this.supabase
-      .from("trades")
-      .select(
-        "id, creator_id, broker_name, broker_order_id, source, instrument, symbol, side, status, entry_price, exit_price, quantity, current_pnl, strategy, executed_at, created_at, updated_at"
-      )
-      .eq("creator_id", creatorId)
-      .order("executed_at", { ascending: false })
-      .limit(limit);
+    const { data, error } = await withRetry(async () => 
+      await this.supabase
+        .from("trades")
+        .select(
+          "id, creator_id, broker_name, broker_order_id, source, instrument, symbol, side, status, entry_price, exit_price, quantity, current_pnl, strategy, executed_at, created_at, updated_at"
+        )
+        .eq("creator_id", creatorId)
+        .order("executed_at", { ascending: false })
+        .limit(limit)
+    );
 
     if (error) throw new FeedRepositoryError(error.message);
     
     // Fetch copy counts for these trades
     const tradeIds = (data as TradeRow[]).map(t => t.id);
-    const { data: copyCounts } = await this.supabase
-      .from("copy_trades")
-      .select("trade_id")
-      .in("trade_id", tradeIds);
+    const { data: copyCounts } = await withRetry(async () => 
+      await this.supabase
+        .from("copy_trades")
+        .select("trade_id")
+        .in("trade_id", tradeIds)
+    );
 
     const countsMap = new Map<string, number>();
     (copyCounts as { trade_id: string }[] || []).forEach(row => {
@@ -188,28 +195,32 @@ export class SupabaseFeedRepository implements FeedRepository {
   }
 
   async getTradeById(tradeId: string): Promise<Trade | null> {
-    const [{ data: trade, error }] = await Promise.all([
-      this.supabase
-        .from("trades")
-        .select(
-          "id, creator_id, broker_name, broker_order_id, source, instrument, symbol, side, status, entry_price, exit_price, quantity, current_pnl, strategy, executed_at, created_at, updated_at"
-        )
-        .eq("id", tradeId)
-        .maybeSingle(),
-      this.supabase
-        .from("copy_trades")
-        .select("id", { count: "exact", head: true })
-        .eq("trade_id", tradeId)
-    ]);
+    const [{ data: trade, error }] = await withRetry(async () => 
+      await Promise.all([
+        this.supabase
+          .from("trades")
+          .select(
+            "id, creator_id, broker_name, broker_order_id, source, instrument, symbol, side, status, entry_price, exit_price, quantity, current_pnl, strategy, executed_at, created_at, updated_at"
+          )
+          .eq("id", tradeId)
+          .maybeSingle(),
+        this.supabase
+          .from("copy_trades")
+          .select("id", { count: "exact", head: true })
+          .eq("trade_id", tradeId)
+      ])
+    );
 
     if (error) throw new FeedRepositoryError(error.message);
     if (!trade) return null;
     
     // Using a separate count for maybeSingle or just fetching it
-    const { count } = await this.supabase
-      .from("copy_trades")
-      .select("id", { count: "exact", head: true })
-      .eq("trade_id", tradeId);
+    const { count } = await withRetry(async () => 
+      await this.supabase
+        .from("copy_trades")
+        .select("id", { count: "exact", head: true })
+        .eq("trade_id", tradeId)
+    );
 
     return toTradeDomain(trade as TradeRow, count || 0);
   }

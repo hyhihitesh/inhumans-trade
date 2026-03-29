@@ -6,7 +6,7 @@ import {
   createCourseAction,
   enrollInCourseAction,
   joinCohortWaitlistAction,
-} from "@/app/(protected)/app/courses/actions";
+} from "@/app/app/courses/actions";
 import { SupabaseLearningRepository } from "@/domain/datasources/supabase-learning";
 import { requireUserProfile } from "@/lib/auth/session";
 import { createClient } from "@/lib/supabase/server";

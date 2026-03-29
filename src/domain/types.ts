@@ -240,6 +240,21 @@ export interface AlertPreferences {
   updatedAt: string;
 }
 
+export type CreatorPerformanceTier = "starter" | "rising" | "pro" | "elite";
+
+export interface CreatorPerformanceSnapshot {
+  id: string;
+  creatorId: string;
+  calculatedAt: string;
+  historyDays: number;
+  winRate: number;
+  roi30d: number;
+  maxDrawdown30d: number;
+  currentTierId: CreatorPerformanceTier;
+  isEligibleForUpgrade: boolean;
+  isFlaggedForDemotion: boolean;
+}
+
 export interface CreatorAnalyticsSummary {
   subscribers: number;
   mrrInr: number;
@@ -249,6 +264,12 @@ export interface CreatorAnalyticsSummary {
   totalCopyTrades: number;
   executedCopyTrades: number;
   monthlyPnl: number;
+  currentTier?: CreatorPerformanceTier;
+  nextTierProgress?: {
+    nextTierId: CreatorPerformanceTier;
+    percentComplete: number;
+    remainingRequirements: string[];
+  };
 }
 
 export interface CommunityPost {

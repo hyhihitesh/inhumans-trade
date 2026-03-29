@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { activateSubscriptionAction } from "@/app/(protected)/app/subscriptions/actions";
+import { activateSubscriptionAction } from "@/app/app/subscriptions/actions";
 
 export default async function SubscriptionSuccessPage({
   searchParams,

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { cancelSubscriptionAction } from "@/app/(protected)/app/subscriptions/actions";
+import { cancelSubscriptionAction } from "@/app/app/subscriptions/actions";
 
 export default async function SubscriptionCancelPage({
   searchParams,

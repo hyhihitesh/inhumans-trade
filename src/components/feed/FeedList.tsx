@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ArrowUpRight, Lock, ShieldCheck } from "lucide-react";
 import { CopyTradeSheet } from "@/components/feed/CopyTradeSheet";
+import { CreatorTierBadge } from "@/components/ui/CreatorTierBadge";
 import { VerifiedTradeCard } from "@/components/ui/VerifiedTradeCard";
 import { FeedItem } from "@/domain/types";
 
@@ -24,13 +25,21 @@ export function FeedList({ items, roleLabel }: { items: FeedItem[]; roleLabel: "
 
   if (items.length === 0) {
     return (
-      <div className="rounded-inhumans-lg border border-dashed border-inhumans-border bg-white p-12 text-center shadow-inhumans">
-        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-surface-2">
-          <ShieldCheck size={24} className="text-text-faint" />
+      <div className="rounded-inhumans-lg border border-dashed border-inhumans-border bg-white p-12 text-center shadow-inhumans animate-in fade-in duration-700">
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-surface-2 shadow-inner">
+          <ShieldCheck size={28} className="text-text-faint" />
         </div>
-        <p className="mx-auto max-w-xs text-sm italic text-text-muted">
+        <p className="mx-auto max-w-xs text-sm font-medium leading-relaxed text-text-muted">
           Your verified stream is currently empty. New signal events will appear here in real-time.
         </p>
+        <div className="mt-8 flex justify-center">
+          <Link 
+            href="/explore" 
+            className="inline-flex items-center gap-2 rounded-inhumans-md bg-surface-2 px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-text-muted hover:bg-inhumans-border hover:text-foreground transition-all"
+          >
+            Explore Creators <ArrowUpRight size={14} />
+          </Link>
+        </div>
       </div>
     );
   }
@@ -44,9 +53,17 @@ export function FeedList({ items, roleLabel }: { items: FeedItem[]; roleLabel: "
               <div className="flex h-8 w-8 items-center justify-center rounded-full border border-inhumans-border bg-surface-2 shadow-sm">
                 <span className="text-[10px] font-bold text-teal-primary">{item.creator.handle[0].toUpperCase()}</span>
               </div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-text-muted">
-                @{item.creator.handle} <span className="mx-1 font-medium text-text-faint">&middot;</span> {timeAgo(item.createdAt)}
-              </p>
+              <div className="flex flex-col gap-0.5">
+                <div className="flex items-center gap-2">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-text-muted">
+                    @{item.creator.handle}
+                  </p>
+                  <CreatorTierBadge tier={(item.creator as any).performanceTier || "starter"} />
+                </div>
+                <p className="text-[8px] font-bold uppercase tracking-widest text-text-faint">
+                  {timeAgo(item.createdAt)}
+                </p>
+              </div>
             </div>
             {item.visibilityTier && item.visibilityTier !== "free" ? (
               <span className="flex items-center gap-1 rounded-full border border-teal-primary/10 bg-teal-primary/5 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-teal-primary">

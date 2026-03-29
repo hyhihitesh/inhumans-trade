@@ -18,22 +18,34 @@ export default async function MobileFeedPage() {
   }
 
   return (
-    <section className="space-y-3">
-      <header className="rounded-xl border border-border bg-card p-4">
-        <p className="text-xs uppercase tracking-widest text-muted-foreground">Mobile Feed</p>
-        <h1 className="mt-1 text-lg font-semibold">Realtime trade stream</h1>
+    <div className="flex flex-col gap-5 pb-20">
+      <FeedRealtimeBridge />
+      
+      <header className="px-1 pt-2">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-faint">Verified Stream</p>
+            <h1 className="mt-1 font-display text-2xl font-bold tracking-tight text-foreground">Market Pulse</h1>
+          </div>
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-profit/10 border border-profit/20">
+            <div className="h-1.5 w-1.5 rounded-full bg-profit animate-pulse" />
+            <span className="text-[9px] font-bold text-profit uppercase tracking-tighter">Live</span>
+          </div>
+        </div>
       </header>
 
       {errorMessage ? (
-        <section className="rounded-xl border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">
-          Failed to load mobile feed. {errorMessage}
+        <section className="rounded-inhumans-lg border border-loss/20 bg-loss/5 p-6 text-center">
+          <p className="text-sm font-medium text-loss">Failed to load pulse. {errorMessage}</p>
+          <button className="mt-4 text-xs font-bold uppercase tracking-widest text-text-muted hover:text-foreground underline underline-offset-4">
+            Try Again
+          </button>
         </section>
       ) : (
-        <>
-          <FeedRealtimeBridge />
+        <div className="space-y-4">
           <FeedList items={items} roleLabel="Follower" />
-        </>
+        </div>
       )}
-    </section>
+    </div>
   );
 }

@@ -6,6 +6,7 @@ import {
   TradeWebhookValidationError,
 } from "@/domain/trade-webhook";
 import type { NormalizedTradeWebhookPayload } from "@/domain/types";
+import { captureServerEvent } from "@/lib/posthog";
 
 function getProvidedSecret(headers: Headers): string | null {
   const direct = headers.get("x-broker-webhook-secret") ?? headers.get("x-webhook-secret");
@@ -71,6 +72,15 @@ export async function POST(request: Request) {
     const result = await repo.persistTradeWebhook({
       ...normalized,
       requestHeaders: safeHeaders(request.headers),
+    });
+
+    // Track event
+    await captureServerEvent(normalized.creatorId, "trade_captured", {
+      broker: normalized.brokerName,
+      symbol: normalized.symbol,
+      side: normalized.side,
+      status: normalized.status,
+      source: normalized.source,
     });
 
     return NextResponse.json(

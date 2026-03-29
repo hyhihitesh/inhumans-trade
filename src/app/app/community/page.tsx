@@ -8,7 +8,7 @@ import {
   toggleCommunityReactionAction,
   unhideCommunityPostAction,
   unlockCommunityRepliesAction,
-} from "@/app/(protected)/app/community/actions";
+} from "@/app/app/community/actions";
 import { CreatorPostComposer } from "@/components/feed/CreatorPostComposer";
 import { SupabaseModerationRepository } from "@/domain/datasources/supabase-moderation";
 import { SupabaseCreatorPlatformRepository } from "@/domain/datasources/supabase-creator-platform";

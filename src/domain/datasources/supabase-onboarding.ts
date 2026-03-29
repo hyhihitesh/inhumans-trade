@@ -7,7 +7,7 @@ import {
   Role,
   UserProfile,
 } from "@/domain/types";
-import { AuthRepository, BrokerRepository, OnboardingRepository } from "@/domain/repositories/onboarding-repositories";
+import { AuthRepository, BrokerRepository, OnboardingRepository } from "@/domain/repositories/onboarding-repository";
 import { isZerodhaSessionExpired } from "@/lib/brokers/zerodha-oauth";
 
 interface OnboardingRow {

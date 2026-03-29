@@ -1,5 +1,5 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import { CreatorAnalyticsSummary } from "@/domain/types";
+import { CreatorAnalyticsSummary, CreatorPerformanceTier } from "@/domain/types";
 import { CreatorBusinessRepository } from "@/domain/repositories/creator-business-repository";
 
 type TierRow = {
@@ -71,6 +71,53 @@ export class SupabaseCreatorBusinessRepository implements CreatorBusinessReposit
     const executedCopyTrades = copyTradeRows.filter((c) => c.status === "executed").length;
     const copyRate = totalTrades > 0 ? Math.round((executedCopyTrades / totalTrades) * 100) : 0;
 
+    const [{ data: tierResult }, { data: snapshot }] = await Promise.all([
+      this.supabase.rpc("evaluate_creator_tier", { p_creator_id: creatorId }),
+      this.supabase
+        .from("creator_performance_snapshots")
+        .select("*")
+        .eq("creator_id", creatorId)
+        .order("calculated_at", { ascending: false })
+        .limit(1)
+        .maybeSingle()
+    ]);
+
+    const currentTier = (tierResult as CreatorPerformanceTier) || "starter";
+    
+    // Calculate progress to next tier
+    let nextTierProgress;
+    const stats = snapshot || { history_days: 0, win_rate: 0, roi_30d: 0 };
+    
+    if (currentTier === "starter") {
+      const historyLeft = Math.max(0, 30 - stats.history_days);
+      const roiLeft = Math.max(0, 0.05 - stats.roi_30d);
+      const winLeft = Math.max(0, 0.45 - stats.win_rate);
+      
+      const requirements = [];
+      if (historyLeft > 0) requirements.push(`${historyLeft} more days of history`);
+      if (roiLeft > 0) requirements.push(`${(roiLeft * 100).toFixed(1)}% more ROI`);
+      if (winLeft > 0) requirements.push(`${(winLeft * 100).toFixed(0)}% more win rate`);
+      
+      nextTierProgress = {
+        nextTierId: "rising" as const,
+        percentComplete: Math.round(((30 - historyLeft) / 30) * 100),
+        remainingRequirements: requirements
+      };
+    } else if (currentTier === "rising") {
+      const historyLeft = Math.max(0, 90 - stats.history_days);
+      const roiLeft = Math.max(0, 0.12 - stats.roi_30d);
+      
+      nextTierProgress = {
+        nextTierId: "pro" as const,
+        percentComplete: Math.round(((90 - historyLeft) / 90) * 100),
+        remainingRequirements: [
+          historyLeft > 0 ? `${historyLeft} more days of history` : null,
+          roiLeft > 0 ? `${(roiLeft * 100).toFixed(1)}% more ROI` : null,
+          stats.win_rate < 0.55 ? "55% Win Rate required" : null
+        ].filter((r): r is string => r !== null)
+      };
+    }
+
     return {
       subscribers,
       mrrInr,
@@ -80,6 +127,8 @@ export class SupabaseCreatorBusinessRepository implements CreatorBusinessReposit
       totalCopyTrades,
       executedCopyTrades,
       monthlyPnl,
+      currentTier,
+      nextTierProgress
     };
   }
 

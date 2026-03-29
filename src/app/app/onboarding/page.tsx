@@ -1,4 +1,4 @@
-import { saveOnboardingAction } from "@/app/(protected)/app/actions";
+import { saveOnboardingAction } from "@/app/app/actions";
 import { requireUserProfile } from "@/lib/auth/session";
 
 const stepTitles: Record<1 | 2 | 3 | 4 | 5, string> = {
@@ -121,29 +121,55 @@ export default async function OnboardingPage({
         ) : null}
 
         {step === 4 ? (
-          <div className="space-y-3 text-sm">
-            <label className="flex items-start gap-2">
-              <input
-                type="checkbox"
-                name="acceptedDisclosure"
-                defaultChecked={Boolean(payload.acceptedDisclosure)}
-                className="mt-1"
-              />
-              <span>I understand that trade updates are informational and not financial advice.</span>
-            </label>
-            <label className="flex items-start gap-2">
-              <input type="checkbox" name="acceptedRisk" defaultChecked={Boolean(payload.acceptedRisk)} className="mt-1" />
-              <span>I acknowledge market risk and possible capital loss.</span>
-            </label>
-            <label className="flex items-start gap-2">
-              <input
-                type="checkbox"
-                name="acceptedNoGuarantee"
-                defaultChecked={Boolean(payload.acceptedNoGuarantee)}
-                className="mt-1"
-              />
-              <span>I agree not to claim guaranteed outcomes.</span>
-            </label>
+          <div className="space-y-6">
+            <div className="rounded-inhumans-md border border-warning/20 bg-warning/5 p-4 text-xs leading-relaxed text-text-muted">
+              <p className="font-bold text-warning mb-2 uppercase tracking-widest">Risk Disclosure on Derivatives</p>
+              <ul className="list-disc pl-4 space-y-1.5">
+                <li>9 out of 10 individual traders in equity Futures and Options Segment, incurred net losses.</li>
+                <li>On an average, loss makers registered net loss close to ₹50,000.</li>
+                <li>Over and above the net losses incurred, loss makers expended an additional 28% of net trading losses as transaction costs.</li>
+                <li>Those making net profits, incurred between 15% to 50% of such profits as transaction cost.</li>
+              </ul>
+            </div>
+
+            <div className="space-y-4 pt-2">
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  name="acceptedDisclosure"
+                  defaultChecked={Boolean(payload.acceptedDisclosure)}
+                  className="mt-1 h-4 w-4 rounded border-inhumans-border text-teal-primary focus:ring-teal-primary/20"
+                  required
+                />
+                <span className="text-sm font-medium text-text-muted group-hover:text-foreground transition-colors">
+                  I understand that Inhumans.io is a technology platform and does not provide investment advice or SEBI-registered advisory services.
+                </span>
+              </label>
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <input 
+                  type="checkbox" 
+                  name="acceptedRisk" 
+                  defaultChecked={Boolean(payload.acceptedRisk)} 
+                  className="mt-1 h-4 w-4 rounded border-inhumans-border text-teal-primary focus:ring-teal-primary/20"
+                  required
+                />
+                <span className="text-sm font-medium text-text-muted group-hover:text-foreground transition-colors">
+                  I acknowledge the high risks associated with trading in derivatives and that past performance of any creator is not indicative of future results.
+                </span>
+              </label>
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  name="acceptedNoGuarantee"
+                  defaultChecked={Boolean(payload.acceptedNoGuarantee)}
+                  className="mt-1 h-4 w-4 rounded border-inhumans-border text-teal-primary focus:ring-teal-primary/20"
+                  required
+                />
+                <span className="text-sm font-medium text-text-muted group-hover:text-foreground transition-colors">
+                  I agree that I am solely responsible for my own trading decisions and any capital loss incurred through mirror execution.
+                </span>
+              </label>
+            </div>
           </div>
         ) : null}
 

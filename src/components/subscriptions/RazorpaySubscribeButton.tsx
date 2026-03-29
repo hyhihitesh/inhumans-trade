@@ -49,11 +49,9 @@ export function RazorpaySubscribeButton({ creatorId, tierId, label = "Start chec
             successUrl: string;
           }
         | {
-            mode: "razorpay";
+            mode: "razorpay_subscription";
             keyId: string;
-            orderId: string;
-            amount: number;
-            currency: string;
+            razorpaySubscriptionId: string;
             subscriptionId: string;
             creatorId: string;
             tierId: string;
@@ -78,19 +76,15 @@ export function RazorpaySubscribeButton({ creatorId, tierId, label = "Start chec
 
       const checkout = new window.Razorpay({
         key: intentPayload.keyId,
-        amount: intentPayload.amount,
-        currency: intentPayload.currency,
+        subscription_id: intentPayload.razorpaySubscriptionId,
         name: "Inhumans.io",
-        description: "Creator subscription",
-        order_id: intentPayload.orderId,
+        description: "Verified Creator Subscription",
         prefill: {
           name: intentPayload.profileName,
           email: intentPayload.profileEmail,
         },
-        notes: {
-          creator_id: intentPayload.creatorId,
-          tier_id: intentPayload.tierId,
-          subscription_id: intentPayload.subscriptionId,
+        theme: {
+          color: "#0D9488", // Teal Primary
         },
         handler: async (response: Record<string, string>) => {
           const verifyResponse = await fetch("/api/billing/razorpay/verify", {
@@ -98,7 +92,7 @@ export function RazorpaySubscribeButton({ creatorId, tierId, label = "Start chec
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               subscriptionId: intentPayload.subscriptionId,
-              razorpay_order_id: response.razorpay_order_id,
+              razorpay_subscription_id: response.razorpay_subscription_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
             }),
@@ -125,16 +119,24 @@ export function RazorpaySubscribeButton({ creatorId, tierId, label = "Start chec
   };
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
       <button
         type="button"
         onClick={startCheckout}
         disabled={loading}
-        className="w-full rounded-md bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground disabled:opacity-60"
+        className="w-full h-12 flex items-center justify-center gap-2 rounded-inhumans-md bg-teal-primary text-xs font-bold uppercase tracking-widest text-white shadow-lg shadow-teal-primary/10 transition-all hover:bg-teal-primary-hover active:scale-[0.98] disabled:opacity-60"
       >
-        {loading ? "Starting..." : label}
+        {loading ? (
+          <div className="h-4 w-4 rounded-full border-2 border-white/20 border-t-white animate-spin" />
+        ) : (
+          label
+        )}
       </button>
-      {error ? <p className="text-xs text-destructive">{error}</p> : null}
+      {error ? (
+        <div className="p-3 rounded-inhumans-md bg-loss/5 border border-loss/10">
+          <p className="text-[10px] font-bold text-loss text-center leading-tight">{error}</p>
+        </div>
+      ) : null}
     </div>
   );
 }

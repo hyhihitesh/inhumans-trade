@@ -1,5 +1,5 @@
 import { Radio, ShieldCheck, TimerReset, Video } from "lucide-react";
-import { createLiveRoomAction, joinLiveSessionAction, scheduleLiveSessionAction } from "@/app/(protected)/app/live/actions";
+import { createLiveRoomAction, joinLiveSessionAction, scheduleLiveSessionAction } from "@/app/app/live/actions";
 import { SupabaseLiveRepository } from "@/domain/datasources/supabase-live";
 import { requireUserProfile } from "@/lib/auth/session";
 import { createClient } from "@/lib/supabase/server";
