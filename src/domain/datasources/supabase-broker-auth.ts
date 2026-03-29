@@ -1,5 +1,5 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import { BrokerConnection } from "@/domain/types";
+import { BrokerConnection, BrokerName } from "@/domain/types";
 import {
   BrokerAuthRepository,
   StoreZerodhaConnectionInput,
@@ -154,6 +154,18 @@ export class SupabaseBrokerAuthRepository implements BrokerAuthRepository {
       accessTokenCiphertext: row.access_token_ciphertext,
       refreshTokenCiphertext: row.refresh_token_ciphertext,
     };
+  }
+
+  async getUserIdByBrokerUserId(brokerName: BrokerName, brokerUserId: string): Promise<string | null> {
+    const { data, error } = await this.supabase
+      .from("broker_connections")
+      .select("user_id")
+      .eq("broker_name", brokerName)
+      .eq("broker_user_id", brokerUserId)
+      .maybeSingle();
+
+    if (error) throw error;
+    return data ? (data.user_id as string) : null;
   }
 }
 

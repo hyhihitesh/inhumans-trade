@@ -1248,10 +1248,10 @@ export default function Home() {
             <div>
               <p className="footer-heading">Legal</p>
               <div className="footer-links">
-                <Link href="/">Terms of Use</Link>
-                <Link href="/">Privacy Policy</Link>
-                <Link href="/">Risk Disclaimer</Link>
-                <Link href="/">Refund Policy</Link>
+                <Link href="/terms">Terms of Service</Link>
+                <Link href="/privacy">Privacy Policy</Link>
+                <Link href="/pricing">Refund Policy</Link>
+                <Link href="/about">About Us</Link>
               </div>
             </div>
 

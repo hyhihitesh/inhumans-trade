@@ -191,3 +191,21 @@ export function isZerodhaSessionExpired(tokenExpiresAt?: string | null, now = ne
   if (Number.isNaN(expiresAt.getTime())) return false;
   return expiresAt.getTime() <= now.getTime();
 }
+
+/**
+ * Verifies the checksum of a Zerodha postback webhook.
+ * Formula: SHA-256(order_id + order_timestamp + api_secret)
+ */
+export function verifyZerodhaPostbackChecksum(input: {
+  apiSecret: string;
+  orderId: string;
+  orderTimestamp: string;
+  checksum: string;
+}): boolean {
+  const expected = crypto
+    .createHash("sha256")
+    .update(`${input.orderId}${input.orderTimestamp}${input.apiSecret}`)
+    .digest("hex");
+
+  return input.checksum === expected;
+}

@@ -1,4 +1,4 @@
-import { BrokerConnection } from "@/domain/types";
+import { BrokerConnection, BrokerName } from "@/domain/types";
 
 export interface StoreZerodhaConnectionInput {
   userId: string;
@@ -21,4 +21,5 @@ export interface BrokerAuthRepository {
   markBrokerReconnectRequired(userId: string, lastError: string): Promise<BrokerConnection>;
   clearBrokerConnection(userId: string): Promise<BrokerConnection>;
   getStoredZerodhaSession(userId: string): Promise<StoredZerodhaSession | null>;
+  getUserIdByBrokerUserId(brokerName: BrokerName, brokerUserId: string): Promise<string | null>;
 }

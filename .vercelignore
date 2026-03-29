@@ -1,0 +1,35 @@
+# Vercel Deployment Optimization
+# -----------------------------
+# Exclude local build artifacts and node_modules to speed up transfer
+.next
+node_modules
+out
+build
+
+# Project-specific internal folders (not needed at runtime)
+conductor
+docs
+scripts
+supabase/migrations
+
+# Testing artifacts (Playwright/Vitest)
+test-results
+playwright-report
+blob-report
+playwright/.cache
+
+# Environment & Secrets (Vercel uses its own secret management)
+.env.local
+*.local
+.env.production.example
+.env.example
+
+# Version Control
+.git
+.github
+.gitignore
+
+# Misc
+*.md
+LICENSE
+tsconfig.tsbuildinfo
