@@ -1,38 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Plus_Jakarta_Sans, Space_Grotesk, Manrope, Geist } from "next/font/google";
+import { Manrope, Newsreader } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
-const inter = Inter({
-  variable: "--font-inter",
+const bodyFont = Manrope({
   subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-});
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
-  subsets: ["latin"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-});
-
-const manrope = Manrope({
   variable: "--font-manrope",
+});
+
+const displayFont = Newsreader({
   subsets: ["latin"],
+  variable: "--font-newsreader",
 });
 
 export const metadata: Metadata = {
-  title: "Inhumans.io | Verified Trade Creator Platform",
-  description: "The trust layer for trading creators. Real-time verified trade feeds, live P&L, and one-tap mirroring.",
+  title: "Inhumans | Verified trades, real performance",
+  description:
+    "Follow traders who prove it with every trade. Inhumans brings broker-verified positions, real-time performance, and trust-first discovery to India's trading community.",
 };
 
 export default function RootLayout({
@@ -43,7 +27,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", inter.variable, jetbrainsMono.variable, plusJakartaSans.variable, spaceGrotesk.variable, manrope.variable, "font-sans", geist.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        bodyFont.variable,
+        displayFont.variable
+      )}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-teal-primary/30">
         {children}
