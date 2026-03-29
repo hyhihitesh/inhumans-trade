@@ -33,3 +33,38 @@ export function verifyRazorpaySignature(
 export function toPaise(amountInr: number): number {
   return Math.round(amountInr * 100);
 }
+
+/**
+ * Creates a linked account for a creator using Razorpay Route.
+ */
+export async function createLinkedAccount(creatorData: {
+  email: string;
+  name: string;
+  pan: string;
+  phone: string;
+}) {
+  return (razorpay as any).accounts.create({
+    email: creatorData.email,
+    phone: creatorData.phone,
+    contact_name: creatorData.name,
+    profile: {
+      category: "financial_services",
+      subcategory: "financial_information_services",
+    },
+    legal_business_name: creatorData.name,
+    business_type: "individual",
+    legal_info: {
+      pan: creatorData.pan,
+    },
+  });
+}
+
+/**
+ * Generates a KYC onboarding link for a linked account.
+ * Note: Check Razorpay docs for the exact dashboard link structure or use Hosted Onboarding.
+ */
+export function generateOnboardingLink(accountId: string): string {
+  // This is a placeholder for the actual onboarding link generation logic
+  // Typically you'd use Razorpay's Hosted Onboarding or return a deep link.
+  return `https://dashboard.razorpay.com/onboarding/${accountId}`;
+}

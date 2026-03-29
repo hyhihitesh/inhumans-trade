@@ -45,11 +45,33 @@ export async function POST(request: Request) {
   const payment = payload.payload?.payment?.entity;
   const subscriptionId = payment?.notes?.subscription_id;
 
+  const supabase = createAdminClient();
+  const repo = new SupabaseCreatorPlatformRepository(supabase);
+
+  // Handle Account KYC Webhooks
+  if (event.startsWith("account.")) {
+    const account = (payload.payload as any)?.account;
+    if (!account?.id) return NextResponse.json({ error: "No account ID in payload" }, { status: 400 });
+
+    let kycStatus = "pending";
+    if (event === "account.activated") kycStatus = "active";
+    if (event === "account.rejected") kycStatus = "rejected";
+    if (event === "account.updated") {
+       // Logic for status check if needed
+    }
+
+    await supabase
+      .from("creator_profiles")
+      .update({ kyc_status: kycStatus })
+      .eq("razorpay_account_id", account.id);
+
+    return NextResponse.json({ ok: true, event });
+  }
+
+  // Handle Payment Webhooks
   if (!subscriptionId) {
     return NextResponse.json({ ok: true, ignored: true, reason: "No subscription note found" });
   }
-
-  const repo = new SupabaseCreatorPlatformRepository(createAdminClient());
 
   if (event === "payment.captured" || event === "order.paid") {
     await repo.activateSubscriptionWithPayment(subscriptionId, {

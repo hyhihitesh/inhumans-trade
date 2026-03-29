@@ -79,11 +79,17 @@ export async function POST(request: Request) {
     });
   }
 
-  // 3. Create Razorpay Subscription
+  // 3. Create Razorpay Subscription with Transfers (Route)
   try {
-    const rzpSubscription = await razorpay.subscriptions.create({
+    const { data: creatorProfile } = await supabase
+      .from("creator_profiles")
+      .select("razorpay_account_id, manual_payout_enabled")
+      .eq("user_id", body.creatorId)
+      .single();
+
+    const rzpSubscriptionData: any = {
       plan_id: planId,
-      total_count: 120, // 10 years of monthly billing
+      total_count: 120,
       quantity: 1,
       customer_notify: 1,
       notes: {
@@ -92,7 +98,21 @@ export async function POST(request: Request) {
         follower_id: user.id,
         tier_id: body.tierId,
       }
-    });
+    };
+
+    // If Route is enabled for this creator, add the transfer logic
+    if (creatorProfile?.razorpay_account_id && !creatorProfile?.manual_payout_enabled) {
+      rzpSubscriptionData.transfers = [
+        {
+          account: creatorProfile.razorpay_account_id,
+          amount: toPaise(tier.monthlyPriceInr * 0.85), // 85% to creator
+          currency: "INR",
+          on_event: "payment.captured"
+        }
+      ];
+    }
+
+    const rzpSubscription = await razorpay.subscriptions.create(rzpSubscriptionData);
 
     return NextResponse.json({
       mode: "razorpay_subscription",
@@ -107,6 +127,7 @@ export async function POST(request: Request) {
       cancelUrl,
     });
   } catch (error: any) {
+    console.error("[RAZORPAY_SUBSCRIPTION_CREATE]", error);
     return NextResponse.json({ error: "Failed to create Razorpay subscription", details: error.message }, { status: 502 });
   }
 }

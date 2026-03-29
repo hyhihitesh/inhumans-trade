@@ -1,0 +1,1 @@
+ALTER TABLE creators ADD COLUMN IF NOT EXISTS razorpay_account_id TEXT; ALTER TABLE creators ADD COLUMN IF NOT EXISTS kyc_status TEXT DEFAULT 'pending'; ALTER TABLE creators ADD COLUMN IF NOT EXISTS manual_payout_enabled BOOLEAN DEFAULT false;
